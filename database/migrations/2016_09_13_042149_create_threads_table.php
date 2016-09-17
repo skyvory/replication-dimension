@@ -18,7 +18,7 @@ class CreateThreadsTable extends Migration
             $table->integer('site_id');
             $table->string('name', 512)->nullable();
             $table->string('url', 512);
-            $table->integer('status')->default(1); // 0:thread closed, 1:thread active
+            $table->integer('status')->default(1); // 1:thread active, 2:thread closed
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\State;
 use App\Site;
+use App\Thread;
 use App\Transformers\StateTransformer;
 use Dingo\Api\Routing\Helpers;
 use App\Parsers\ParserManager;
@@ -43,11 +44,58 @@ class StateController extends Controller
 
 		$html_content = $this->getHtmlContent($url);
 		$thread_name = $this->getSiteTitle($html_content);
-
 		$site = $this->getSiteMatch($url);
-		// >> get id site for thread insert next
+		$site_id = $site['id'];
 
-		return $site;
+		if($this->isThreadExist($url)) {
+			return "Thread already exist!";
+		}
+
+		\DB::beginTransaction();
+
+		try {
+			$thread = new Thread();
+			$thread->site_id = $site_id;
+			$thread->name = $thread_name;
+			$thread->url = $url;
+			$thread->status = 1;
+			$exec = $thread->save();
+
+			$state = new State();
+			$state->thread_id = $thread->id;
+			$state->download_directory = $download_directory;
+			$state->last_update = date('Y-m-d H:i:s');
+			$state->status = 1;
+			$state->save();
+
+			\DB::commit();
+		}
+		catch(Exception $e) {
+			\DB::rollback();
+			throw($e);
+		}
+
+		return "Successfully create state with id:$state->id";
+	}
+
+	public function isThreadExist($url) {
+		$existingThreadCount = Thread::where('url', $url)->where('status', 1)->get()->count();
+		if($existingThreadCount > 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public function excerptMainUrl($url) {
+		$trim = array('http://', 'https://');
+		foreach ($trim as $tr) {
+			if(strpos($url, $tr) === 0) {
+				return str_replace($tr, '', $url);
+			}
+		}
+		return $url;
 	}
 
 	public function getSiteTitle($html) {
@@ -57,7 +105,8 @@ class StateController extends Controller
 	}
 
 	public function getHtmlContent($url) {
-		$agent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)';
+		$agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0';
+		// $agent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)';
 		$content = curl_init();
 		curl_setopt($content, CURLOPT_URL, $url);
 		curl_setopt($content, CURLOPT_RETURNTRANSFER, 1);
@@ -69,12 +118,12 @@ class StateController extends Controller
 	}
 
 	public function getSiteMatch($url) {
-		$domain = $this->domainConvert($url);
+		$domain = $this->excerptDomain($url);
 		$site = Site::where('domain', $domain)->first();
-		return $site->count();
+		return $site;
 	}
 
-	public function domainConvert($url) {
+	public function excerptDomain($url) {
 		$urlMap = array('com', 'net', 'co.uk', 'org', 'co.jp', 'goo.ne');
 
 		$host = "";
