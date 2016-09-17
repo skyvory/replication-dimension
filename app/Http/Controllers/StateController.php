@@ -47,7 +47,7 @@ class StateController extends Controller
 		$site = $this->getSiteMatch($url);
 		$site_id = $site['id'];
 
-		if($this->isThreadExist($url)) {
+		if($this->isDuplicateState($url)) {
 			return "Thread already exist!";
 		}
 
@@ -78,9 +78,9 @@ class StateController extends Controller
 		return "Successfully create state with id:$state->id";
 	}
 
-	public function isThreadExist($url) {
-		$existingThreadCount = Thread::where('url', $url)->where('status', 1)->get()->count();
-		if($existingThreadCount > 0) {
+	public function isDuplicateState($url) {
+		$existingStateCount = State::join('threads', 'threads.id', '=', 'states.thread_id')->where('url', $url)->where('states.status', 1)->get()->count();
+		if($existingStateCount > 0) {
 			return true;
 		}
 		else {
