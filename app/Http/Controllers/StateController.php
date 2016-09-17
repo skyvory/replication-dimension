@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\State;
-// namespace App\Http\Controllers\Api;
+use App\Site;
 use App\Transformers\StateTransformer;
 use Dingo\Api\Routing\Helpers;
+use App\Parsers\ParserManager;
 
 class StateController extends Controller
 {
 	use Helpers;
+	use ParserManager;
 	public function __construct() {}
 
 	public function index()
@@ -24,9 +26,69 @@ class StateController extends Controller
 				)
 			->where('states.status', 1)
 			->orderBy('states.created_at', 'asc')
-			->paginate();
+			->get();
 
-		// return $state->toArray();
-		return $this->response->paginator($state, new StateTransformer);
+		// $plug = $this->getParserBridge();
+		// return $plug;
+
+		return $state->toArray();
+		return $this->response->collection($state, new StateTransformer);
+	}
+
+	public function newInstance(Request $request)
+	{
+		// >>> to add validator
+		$url = $request->input('url');
+		$download_directory = $request->input('download_directory');
+
+		$html_content = $this->getHtmlContent($url);
+		$thread_name = $this->getSiteTitle($html_content);
+
+		$site = $this->getSiteMatch($url);
+		// >> get id site for thread insert next
+
+		return $site;
+	}
+
+	public function getSiteTitle($html) {
+		$str = trim(preg_replace('/\s+/', ' ', $html)); // supports line breaks inside <title>
+		preg_match("/\<title\>(.*)\<\/title\>/i", $str, $title); // ignore case
+		return $title[1];
+	}
+
+	public function getHtmlContent($url) {
+		$agent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)';
+		$content = curl_init();
+		curl_setopt($content, CURLOPT_URL, $url);
+		curl_setopt($content, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($content, CURLOPT_USERAGENT, $agent);
+		$result = curl_exec($content);
+		curl_close($content);
+
+		return $result;
+	}
+
+	public function getSiteMatch($url) {
+		$domain = $this->domainConvert($url);
+		$site = Site::where('domain', $domain)->first();
+		return $site->count();
+	}
+
+	public function domainConvert($url) {
+		$urlMap = array('com', 'net', 'co.uk', 'org', 'co.jp', 'goo.ne');
+
+		$host = "";
+		$urlData = parse_url($url);
+		$hostData = explode('.', $urlData['host']);
+		$hostData = array_reverse($hostData);
+
+		if(array_search($hostData[1] . '.' . $hostData[0], $urlMap) !== FALSE) {
+			$host = $hostData[2] . '.' . $hostData[1] . '.' . $hostData[0];
+		}
+		else if(array_search($hostData[0], $urlMap) !== FALSE) {
+			$host = $hostData[1] . '.' . $hostData[0];
+		}
+
+		return $host;
 	}
 }
