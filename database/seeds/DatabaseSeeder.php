@@ -23,12 +23,12 @@ class DatabaseSeeder extends Seeder
 		$sites = array(
 			[
 				'id' => '1',
-				'name' => 'deviantart',
+				'name' => 'Deviantart',
 				'domain' => 'deviantart.com',
 			],
 			[
 				'id' => '2',
-				'name' => 'safebooru',
+				'name' => 'Safebooru',
 				'domain' => 'safebooru.org',
 			],
 		);

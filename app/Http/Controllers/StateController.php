@@ -10,8 +10,10 @@ use App\State;
 use App\Site;
 use App\Thread;
 use App\Transformers\StateTransformer;
+use App\Transformers\NewStateReturnTransformer;
 use Dingo\Api\Routing\Helpers;
 use App\Parsers\ParserManager;
+use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class StateController extends Controller
 {
@@ -38,18 +40,32 @@ class StateController extends Controller
 
 	public function newInstance(Request $request)
 	{
+		
+
+		$regex = 'https?:\/\/[^/\s]+\/\S+\.(html|net|jpg)';
+		// >>>device teh regex
+		return file_get_contents(public_path() . '\dev.html');
 		// >>> to add validator
+
 		$url = $request->input('url');
 		$download_directory = $request->input('download_directory');
 
-		$html_content = $this->getHtmlContent($url);
-		$thread_name = $this->getSiteTitle($html_content);
+		// avoid creating duplicate state
+		// if($this->isDuplicateState($url)) {
+		// 	throw new ConflictHttpException('Unable to create duplicate state!');
+		// }
+
+		// retrieve record about the site
 		$site = $this->getSiteMatch($url);
 		$site_id = $site['id'];
+		$site_name = $site['name'];
 
-		if($this->isDuplicateState($url)) {
-			return "Thread already exist!";
-		}
+
+		$html_content = $this->getHtmlContent($url);
+		$thread_name = $this->getSiteTitle($html_content);
+
+		return $html_content;
+		return $this->parseThreadContent($site_name, 'aaa');
 
 		\DB::beginTransaction();
 
@@ -76,6 +92,11 @@ class StateController extends Controller
 		}
 
 		return "Successfully create state with id:$state->id";
+		// >>>return result of parse
+
+		$location = array('data' => array('what is location' => 'the fck'));
+		return $this->response->array($location);
+
 	}
 
 	public function isDuplicateState($url) {
