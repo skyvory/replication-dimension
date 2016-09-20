@@ -46,32 +46,19 @@ class StateController extends Controller
 		$download_directory = $request->input('download_directory');
 
 		// avoid creating duplicate state
-		// if($this->isDuplicateState($url)) {
-		// 	throw new ConflictHttpException('Unable to create duplicate state!');
-		// }
+		if($this->isDuplicateState($url)) {
+			throw new ConflictHttpException('Unable to create duplicate state!');
+		}
 
 		// retrieve record about the site
 		$site = $this->getSiteMatch($url);
 		$site_id = $site['id'];
 		$site_name = $site['name'];
 
-		################################
 
-		$html = file_get_contents(public_path() . '\dev.html');
-
-		$res = $this->parseThreadContent($site_name, $html);
-		
-		return $res;
-
-
-
-		#############################
-
+		// $mock_html_content = file_get_contents(public_path() . '\dev.html');
 		$html_content = $this->getHtmlContent($url);
 		$thread_name = $this->getSiteTitle($html_content);
-
-		return $html_content;
-		return $this->parseThreadContent($site_name, 'aaa');
 
 		\DB::beginTransaction();
 
@@ -97,11 +84,22 @@ class StateController extends Controller
 			throw($e);
 		}
 
-		return "Successfully create state with id:$state->id";
-		// >>>return result of parse
+		$images = $this->parseThreadContent($site_name, $html_content);
 
-		$location = array('data' => array('what is location' => 'the fck'));
-		return $this->response->array($location);
+		$compact = array(
+			'data' => array(
+				'thread' => array(
+					'name' => $thread_name
+					),
+				'state' => array(
+					'id' => $state->id
+					),
+				'images' => $images
+				)
+			);
+
+
+		return $this->response->array($compact);
 
 	}
 
