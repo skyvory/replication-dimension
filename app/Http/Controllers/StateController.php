@@ -40,11 +40,6 @@ class StateController extends Controller
 
 	public function newInstance(Request $request)
 	{
-		
-
-		$regex = 'https?:\/\/[^/\s]+\/\S+\.(html|net|jpg)';
-		// >>>device teh regex
-		return file_get_contents(public_path() . '\dev.html');
 		// >>> to add validator
 
 		$url = $request->input('url');
@@ -60,6 +55,17 @@ class StateController extends Controller
 		$site_id = $site['id'];
 		$site_name = $site['name'];
 
+		################################
+
+		$html = file_get_contents(public_path() . '\dev.html');
+
+		$res = $this->parseThreadContent($site_name, $html);
+		
+		return $res;
+
+
+
+		#############################
 
 		$html_content = $this->getHtmlContent($url);
 		$thread_name = $this->getSiteTitle($html_content);
