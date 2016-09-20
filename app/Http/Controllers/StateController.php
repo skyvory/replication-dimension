@@ -103,7 +103,7 @@ class StateController extends Controller
 
 	}
 
-	public function isDuplicateState($url) {
+	protected function isDuplicateState($url) {
 		$existingStateCount = State::join('threads', 'threads.id', '=', 'states.thread_id')->where('url', $url)->where('states.status', 1)->get()->count();
 		if($existingStateCount > 0) {
 			return true;
@@ -113,7 +113,7 @@ class StateController extends Controller
 		}
 	}
 
-	public function excerptMainUrl($url) {
+	protected function excerptMainUrl($url) {
 		$trim = array('http://', 'https://');
 		foreach ($trim as $tr) {
 			if(strpos($url, $tr) === 0) {
@@ -123,13 +123,13 @@ class StateController extends Controller
 		return $url;
 	}
 
-	public function getSiteTitle($html) {
+	protected function getSiteTitle($html) {
 		$str = trim(preg_replace('/\s+/', ' ', $html)); // supports line breaks inside <title>
 		preg_match("/\<title\>(.*)\<\/title\>/i", $str, $title); // ignore case
 		return $title[1];
 	}
 
-	public function getHtmlContent($url) {
+	protected function getHtmlContent($url) {
 		$agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0';
 		// $agent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)';
 		$content = curl_init();
@@ -142,13 +142,13 @@ class StateController extends Controller
 		return $result;
 	}
 
-	public function getSiteMatch($url) {
+	protected function getSiteMatch($url) {
 		$domain = $this->excerptDomain($url);
 		$site = Site::where('domain', $domain)->first();
 		return $site;
 	}
 
-	public function excerptDomain($url) {
+	protected function excerptDomain($url) {
 		$urlMap = array('com', 'net', 'co.uk', 'org', 'co.jp', 'goo.ne');
 
 		$host = "";
