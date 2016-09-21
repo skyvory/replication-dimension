@@ -18,7 +18,7 @@ class CreateStatesTable extends Migration
             $table->integer('thread_id');
             $table->string('download_directory', 256)->nullable(); // full absolute path
             $table->dateTime('last_update');
-            $table->integer('status')->default(1); // 1:active, 2:inactive
+            $table->integer('status')->default(1); // 1:active, 2:inactive, 3:delete
             $table->timestamps();
         });
     }

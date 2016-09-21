@@ -103,8 +103,7 @@ class StateController extends Controller
 
 	}
 
-	public function update(Request $request) {
-		$id = $request->id;
+	public function update(Request $request, $id) {
 		$download_directory = $request->download_directory;
 
 		$state = State::find($id);
@@ -113,6 +112,18 @@ class StateController extends Controller
 
 		if(!$exec) {
 			throw new ConflictHttpException('Update failed!');
+		}
+
+		return response()->json(['meta' => ['message' => 'success', 'status_code' => 200]]);
+	}
+
+	public function delete($id) {
+		try {
+			$state = State::find($id);
+			$state->status = 3;
+			$state->save();
+		} catch (\Exception $e) {
+			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Delete failed');
 		}
 
 		return response()->json(['meta' => ['message' => 'success', 'status_code' => 200]]);
