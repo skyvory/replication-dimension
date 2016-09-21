@@ -103,6 +103,21 @@ class StateController extends Controller
 
 	}
 
+	public function update(Request $request) {
+		$id = $request->id;
+		$download_directory = $request->download_directory;
+
+		$state = State::find($id);
+		$state->download_directory = $download_directory;
+		$exec = $state->save();
+
+		if(!$exec) {
+			throw new ConflictHttpException('Update failed!');
+		}
+
+		return response()->json(['meta' => ['message' => 'success', 'status_code' => 200]]);
+	}
+
 	protected function isDuplicateState($url) {
 		$existingStateCount = State::join('threads', 'threads.id', '=', 'states.thread_id')->where('url', $url)->where('states.status', 1)->get()->count();
 		if($existingStateCount > 0) {
