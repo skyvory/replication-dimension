@@ -36,6 +36,7 @@ $api->version('v1', [], function($api) {
 		$api->delete('/{id}', 'App\Http\Controllers\ThreadController@delete');
 		$api->get('/{id}/refresh', 'App\Http\Controllers\ThreadController@refresh');
 		$api->get('/{id}/images', 'App\Http\Controllers\ThreadController@getSavedImages');
+		$api->get('/{id}/load', 'App\Http\Controllers\ThreadController@loadNewImagesList');
 	});
 
 	$api->group(['prefix' => 'image'], function($api) {

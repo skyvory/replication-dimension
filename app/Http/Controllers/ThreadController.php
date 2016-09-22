@@ -144,6 +144,21 @@ class ThreadController extends Controller
 		return response()->json(['data' => ['images' => $images]]);
 	}
 
+	public function loadNewImagesList($id) {
+		$existing_images = Images::where('thread_id', $id)->get();
+		$existing_images_urls = array();
+		foreach ($existing_images as $img) {
+			$existing_images_urls[] = $img['url'];
+		}
+
+		$thread = Thread::find($id);
+		$site_name = $this->getSiteMatch($thread->url)['name'];
+		$html_content = $this->getHtmlContent($thread->url);
+		$images = $this->parseThreadContent($site_name, $html_content);
+
+		>>>check each url with saved one, extract new images url
+	}
+
 	protected function isDuplicateThread($url) {
 		$existingThreadCount = Thread::where('url', $url)->whereIn('.status', array(1,2,3))->get()->count();
 		if($existingThreadCount > 0) {
@@ -183,7 +198,7 @@ class ThreadController extends Controller
 		return $result;
 	}
 
-	protected function getSiteMatch($url) {
+	protected function getSiteMatch($thread->urlu['name'];rl) {
 		$domain = $this->excerptDomain($url);
 		$site = Site::where('domain', $domain)->first();
 		return $site;
