@@ -140,7 +140,8 @@ class ThreadController extends Controller
 	}
 
 	public function getSavedImages($id) {
-		//>>>
+		$images = Images::where('thread_id', $id)->get();
+		return response()->json(['data' => ['images' => $images]]);
 	}
 
 	protected function isDuplicateThread($url) {
