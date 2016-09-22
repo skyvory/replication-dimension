@@ -6,16 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\State;
 use App\Site;
 use App\Thread;
-use App\Transformers\StateTransformer;
-use App\Transformers\NewStateReturnTransformer;
+use App\Transformers\ThreadTransformer;
 use Dingo\Api\Routing\Helpers;
 use App\Parsers\ParserManager;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
-class StateController extends Controller
+class ThreadController extends Controller
 {
 	use Helpers;
 	use ParserManager;
@@ -23,19 +21,11 @@ class StateController extends Controller
 
 	public function index()
 	{
-		$state = State::join('threads', 'threads.id', '=', 'states.thread_id')
-			->select('states.id', 'states.download_directory', 'states.last_update', 'states.status as state_status',
-				'threads.name', 'threads.url', 'threads.status as thread_status'
-				)
-			->where('states.status', 1)
-			->orderBy('states.created_at', 'asc')
+		$threads = Thread::where('status', '!=', 4)
+			->orderBy('created_at', 'asc')
 			->get();
 
-		// $plug = $this->getParserBridge();
-		// return $plug;
-
-		return $state->toArray();
-		return $this->response->collection($state, new StateTransformer);
+		return $this->response->collection($threads, new ThreadTransformer);
 	}
 
 	public function newInstance(Request $request)
@@ -46,7 +36,7 @@ class StateController extends Controller
 		$download_directory = $request->input('download_directory');
 
 		// avoid creating duplicate state
-		if($this->isDuplicateState($url)) {
+		if($this->isDuplicateThread($url)) {
 			throw new ConflictHttpException('Unable to create duplicate state!');
 		}
 
@@ -68,14 +58,9 @@ class StateController extends Controller
 			$thread->name = $thread_name;
 			$thread->url = $url;
 			$thread->status = 1;
+			$thread->download_directory = $download_directory;
+			$thread->last_update = date('Y-m-d H:i:s');
 			$exec = $thread->save();
-
-			$state = new State();
-			$state->thread_id = $thread->id;
-			$state->download_directory = $download_directory;
-			$state->last_update = date('Y-m-d H:i:s');
-			$state->status = 1;
-			$state->save();
 
 			\DB::commit();
 		}
@@ -89,10 +74,8 @@ class StateController extends Controller
 		$compact = array(
 			'data' => array(
 				'thread' => array(
+					'id' => $thread->id,
 					'name' => $thread_name
-					),
-				'state' => array(
-					'id' => $state->id
 					),
 				'images' => $images
 				)
@@ -106,9 +89,9 @@ class StateController extends Controller
 	public function update(Request $request, $id) {
 		$download_directory = $request->download_directory;
 
-		$state = State::find($id);
-		$state->download_directory = $download_directory;
-		$exec = $state->save();
+		$thread = Thread::find($id);
+		$thread->download_directory = $download_directory;
+		$exec = $thread->save();
 
 		if(!$exec) {
 			throw new ConflictHttpException('Update failed!');
@@ -119,9 +102,9 @@ class StateController extends Controller
 
 	public function delete($id) {
 		try {
-			$state = State::find($id);
-			$state->status = 3;
-			$state->save();
+			$thread = Thread::find($id);
+			$thread->status = 4;
+			$thread->save();
 		} catch (\Exception $e) {
 			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Delete failed');
 		}
@@ -129,9 +112,40 @@ class StateController extends Controller
 		return response()->json(['meta' => ['message' => 'success', 'status_code' => 200]]);
 	}
 
-	protected function isDuplicateState($url) {
-		$existingStateCount = State::join('threads', 'threads.id', '=', 'states.thread_id')->where('url', $url)->where('states.status', 1)->get()->count();
-		if($existingStateCount > 0) {
+	public function refresh($id) {
+		try {
+			$thread = Thread::find($id);
+
+			if($thread->status == 3) {
+				throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('Thread is already marked as closed');
+			}
+
+			$html_content = $this->getHtmlContent($thread->url);
+			$site_name = $this->getSiteMatch($thread->url)['name'];
+			$images = $this->parseThreadContent($site_name, $html_content);
+
+			return response()->json([
+				'data' => [
+					'thread' => [
+						'url' => $thread->url,
+						'status' => $thread->thread_status,
+						'download_directory' => $thread->download_directory,
+					],
+					'images' => $images
+				]
+			]);
+		} catch (Exception $e) {
+			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Refresh failed');
+		}
+	}
+
+	public function getSavedImages($id) {
+		//>>>
+	}
+
+	protected function isDuplicateThread($url) {
+		$existingThreadCount = Thread::where('url', $url)->whereIn('.status', array(1,2,3))->get()->count();
+		if($existingThreadCount > 0) {
 			return true;
 		}
 		else {

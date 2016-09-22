@@ -29,16 +29,16 @@ use Illuminate\Http\Request;
 $api = app('Dingo\Api\Routing\Router');
 
 $api->version('v1', [], function($api) {
-	$api->group(['prefix' => 'state'], function($api) {
-		$api->get('/', 'App\Http\Controllers\StateController@index');
-		$api->post('/new', 'App\Http\Controllers\StateController@newInstance');
-		$api->put('/{id}', 'App\Http\Controllers\StateController@update');
-		$api->delete('/{id}', 'App\Http\Controllers\StateController@delete');
-		$api->get('/{id}/refresh', 'App\Http\Controllers\StateController@refresh');
+	$api->group(['prefix' => 'thread'], function($api) {
+		$api->get('/', 'App\Http\Controllers\ThreadController@index');
+		$api->post('/new', 'App\Http\Controllers\ThreadController@newInstance');
+		$api->put('/{id}', 'App\Http\Controllers\ThreadController@update');
+		$api->delete('/{id}', 'App\Http\Controllers\ThreadController@delete');
+		$api->get('/{id}/refresh', 'App\Http\Controllers\ThreadController@refresh');
 	});
 
 	$api->group(['prefix' => 'image'], function($api) {
 		$api->get('/load', 'App\Http\Controllers\ImageController@load');
-		$api->post('/metaOnly', 'App\Http\Controllers\ImageController@insertMeta');
+		$api->post('/metaOnly', 'App\Http\Controllers\ImageController@createMeta');
 	});
 });
