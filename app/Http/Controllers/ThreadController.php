@@ -8,6 +8,7 @@ use App\Http\Requests;
 
 use App\Site;
 use App\Thread;
+use App\Image;
 use App\Transformers\ThreadTransformer;
 use Dingo\Api\Routing\Helpers;
 use App\Parsers\ParserManager;
@@ -145,7 +146,7 @@ class ThreadController extends Controller
 	}
 
 	public function loadNewImagesList($id) {
-		$existing_images = Images::where('thread_id', $id)->get();
+		$existing_images = Image::where('thread_id', $id)->get();
 		$existing_images_urls = array();
 		foreach ($existing_images as $img) {
 			$existing_images_urls[] = $img['url'];
@@ -156,7 +157,14 @@ class ThreadController extends Controller
 		$html_content = $this->getHtmlContent($thread->url);
 		$images = $this->parseThreadContent($site_name, $html_content);
 
-		>>>check each url with saved one, extract new images url
+		$new_images_stack = array();
+		foreach ($images as $image) {
+			if(!in_array($image, $existing_images_urls)) {
+				$new_images_stack[] = $image;
+			}
+		}
+
+		return response()->json(['data' => ['images' => $new_images_stack]]);
 	}
 
 	protected function isDuplicateThread($url) {
@@ -198,7 +206,7 @@ class ThreadController extends Controller
 		return $result;
 	}
 
-	protected function getSiteMatch($thread->urlu['name'];rl) {
+	protected function getSiteMatch($url) {
 		$domain = $this->excerptDomain($url);
 		$site = Site::where('domain', $domain)->first();
 		return $site;
