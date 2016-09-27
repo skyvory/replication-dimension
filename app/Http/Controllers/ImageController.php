@@ -10,6 +10,7 @@ use App\Image;
 use App\Thread;
 use App\Transformers\StateTransformer;
 use Dingo\Api\Routing\Helpers;
+use InterventionImage;
 
 class ImageController extends Controller
 {
@@ -64,8 +65,16 @@ class ImageController extends Controller
 			throw new \Symfony\Component\HttpKernel\Exception\ConflictHttpException('Update failed!');
 		}
 
-		>>>thumbnail creation
-		return >>>json of image entity + directory to thumbnail;
+		# thumbnail creation
+		$img = InterventionImage::make($file_path);
+		$img->resize(300, null, function($constraint) {
+			$constraint->aspectRatio();
+			$constraint->upsize();
+		});
+		$img->save('thumbnail/' . '~thumb_' . $image_name, 50);
+		return "OK";
+		>>>check if file exist with same size
+		>>>prepare own thumbnail hash
 	}
 
 	protected function saveImage($url, $file_path)
