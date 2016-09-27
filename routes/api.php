@@ -40,7 +40,7 @@ $api->version('v1', [], function($api) {
 	});
 
 	$api->group(['prefix' => 'image'], function($api) {
-		$api->get('/load', 'App\Http\Controllers\ImageController@load');
+		$api->post('/load', 'App\Http\Controllers\ImageController@load');
 		$api->post('/metaOnly', 'App\Http\Controllers\ImageController@createMeta');
 	});
 });
