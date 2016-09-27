@@ -13,11 +13,13 @@ use App\Transformers\ThreadTransformer;
 use Dingo\Api\Routing\Helpers;
 use App\Parsers\ParserManager;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
+use App\Http\Controllers\Writer;
 
 class ThreadController extends Controller
 {
 	use Helpers;
 	use ParserManager;
+	use Writer;
 	public function __construct() {}
 
 	public function index()
@@ -38,7 +40,7 @@ class ThreadController extends Controller
 
 		// avoid creating duplicate state
 		if($this->isDuplicateThread($url)) {
-			throw new ConflictHttpException('Unable to create duplicate state!');
+			// throw new ConflictHttpException('Unable to create duplicate state!');
 		}
 
 		// retrieve record about the site
@@ -69,6 +71,8 @@ class ThreadController extends Controller
 			\DB::rollback();
 			throw($e);
 		}
+
+		$this->writeHtmlToDisk($html_content, $download_directory);
 
 		$images = $this->parseThreadContent($site_name, $html_content);
 
@@ -168,13 +172,18 @@ class ThreadController extends Controller
 	}
 
 	protected function isDuplicateThread($url) {
-		$existingThreadCount = Thread::where('url', $url)->whereIn('.status', array(1,2,3))->get()->count();
-		if($existingThreadCount > 0) {
-			return true;
+		try {
+			$existingThreadCount = Thread::where('url', $url)->whereIn('.status', array(1,2,3))->get()->count();
+			if($existingThreadCount > 0) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		} catch (\Exception $e) {
+			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Failed to check for duplicate!');
 		}
-		else {
-			return false;
-		}
+		
 	}
 
 	protected function excerptMainUrl($url) {
