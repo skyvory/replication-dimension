@@ -19,7 +19,7 @@ class CreateImagesTable extends Migration
             $table->string('url', 512); // complete url of the image
             $table->string('size', 64)->nullable(); // image size in bytes
             $table->string('name', 128)->nullable(); // name of image complete with the extension
-            $table->integer('download_status')->default(0); // 0:not downloaded yet, 1:downloaded, 2:block
+            $table->integer('download_status')->default(0); // 0:not downloaded yet, 1:downloaded, 2:block, 3:modified
             $table->timestamps();
         });
     }

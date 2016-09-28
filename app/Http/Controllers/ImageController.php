@@ -43,8 +43,19 @@ class ImageController extends Controller
 		# check if file already exist / downloaded
 		if(file_exists($file_path)) {
 			if($source_image_size == filesize($file_path)) {
+				$image = Image::where('thread_id', $thread_id)->where('url', $url)->where('download_status', 1)->first();
+				if($image->count() != 1) {
+					$image = new Image();
+					$image->thread_id = $thread_id;
+					$image->name = $image_name;
+					$image->url = $url;
+					$image->size = $source_image_size;
+					$image->download_status = 1;
+					$image->save();
+				}
 				return response()->json([
 					'data' => [
+						'id' => $image->id;
 						'name' => $image_name,
 						'size' => $source_image_size,
 						'thumb' => 'thumbnails/' . $thread_id . '/~thumb_' . $image_name,
@@ -106,6 +117,7 @@ class ImageController extends Controller
 
 		return response()->json([
 			'data' => [
+				'id' => $image->id,
 				'name' => $image_name,
 				'size' => $source_image_size,
 				'thumb' => 'thumbnails/' . $thread_id . '/~thumb_' . $image_name,
