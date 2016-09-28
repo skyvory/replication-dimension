@@ -43,5 +43,6 @@ $api->version('v1', [], function($api) {
 		$api->post('/load', 'App\Http\Controllers\ImageController@load');
 		$api->post('/metaOnly', 'App\Http\Controllers\ImageController@createMeta');
 		$api->delete('/{id}/block', 'App\Http\Controllers\ImageController@block');
+		$api->delete('/{id}/exclude', 'App\Http\Controllers\ImageController@exclude');
 	});
 });

@@ -130,6 +130,25 @@ class ImageController extends Controller
 		]);
 	}
 
+	public function exclude($id) {
+		$image = Image::find($id);
+		$thread = Thread::find($image->thread_id);
+		$file_path = $thread->download_directory . '\\' . $image->name;
+
+		if(!is_dir('exclusions')) {
+			mkdir('exclusions', 777);
+		}
+
+		if(file_exists($file_path)) {
+			$ren = rename($file_path, 'exclusions/' . $image->name);
+			if($ren) {
+				$image->download_status = 2;
+				$image->save();
+			}
+		}
+		return response()->json(['meta' => ['message' => 'Exclude and block success!']]);
+	}
+
 	public function block($id) {
 		$image = Image::find($id);
 		$thread = Thread::find($image->thread_id);
@@ -175,5 +194,24 @@ class ImageController extends Controller
 		}
 
 		return $written_byte;
+	}
+
+	private function deleteDir($dirPath) {
+		if (! is_dir($dirPath)) {
+			throw new InvalidArgumentException("$dirPath must be a directory");
+		}
+		if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
+			$dirPath .= '/';
+		}
+		$files = glob($dirPath . '*', GLOB_MARK);
+		foreach ($files as $file) {
+			if (is_dir($file)) {
+				self::deleteDir($file);
+			}
+			else {
+				unlink($file);
+			}
+		}
+		rmdir($dirPath);
 	}
 }
