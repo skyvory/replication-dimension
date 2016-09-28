@@ -40,8 +40,32 @@ class ImageController extends Controller
 		$image_name = basename($url);
 		$file_path = $thread->download_directory . "\\" . $image_name;
 
+		# check if file already exist / downloaded
+		if(file_exists($file_path)) {
+			if($source_image_size == filesize($file_path)) {
+				return response()->json([
+					'data' => [
+						'name' => $image_name,
+						'size' => $source_image_size,
+						'thumb' => 'thumbnails/' . $thread_id . '/~thumb_' . $image_name,
+					],
+					'meta' => [
+						'message' => 'Exact image already exist in assigned directory!',
+					],
+				]);
+			}
+			else {
+				# rename old file (before redownload the new one)
+				$exif = exif_read_data($file_path);
+				$existing_image_date = date('YmdHis', $exif['FileDateTime']);
+				$path_parts = pathinfo($file_path);
+				$new_file_path = $path_parts['dirname'] . '\\' . $path_parts['filename'] . '_' . $existing_image_date . '.' . $path_parts['extension'];
+				rename($file_path, $new_file_path);
+			}
+		}
+
 		$save_success = false;
-		for ($iteration=0; $iteration <= 3; $iteration++) { 
+		for ($iteration=0; $iteration < 3; $iteration++) { 
 			$written_byte = $this->saveImage($url, $file_path);
 			if($source_image_size == filesize($file_path) && $source_image_size == $written_byte) {
 				$save_success = true;
@@ -50,7 +74,7 @@ class ImageController extends Controller
 		}
 
 		if(!$save_success) {
-			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Fail to save image');
+			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Fail to save image after ' . $iteration . ' attempts.');
 		}
 
 		try {
@@ -65,16 +89,28 @@ class ImageController extends Controller
 			throw new \Symfony\Component\HttpKernel\Exception\ConflictHttpException('Update failed!');
 		}
 
+		# Prepare folder for thumbnail. Separation to prevent possible filename conflict 
+		if(!is_dir('thumbnails')) {
+			mkdir('thumbnails', 777);
+		}
+		if(!is_dir('thumbnails/' . $thread_id)) {
+			mkdir('thumbnails/' . $thread_id);
+		}
 		# thumbnail creation
 		$img = InterventionImage::make($file_path);
 		$img->resize(300, null, function($constraint) {
 			$constraint->aspectRatio();
 			$constraint->upsize();
 		});
-		$img->save('thumbnail/' . '~thumb_' . $image_name, 50);
-		return "OK";
-		>>>check if file exist with same size
-		>>>prepare own thumbnail hash
+		$img->save('thumbnails/' . $thread_id . '/~thumb_' . $image_name, 50);
+
+		return response()->json([
+			'data' => [
+				'name' => $image_name,
+				'size' => $source_image_size,
+				'thumb' => 'thumbnails/' . $thread_id . '/~thumb_' . $image_name,
+			]
+		]);
 	}
 
 	protected function saveImage($url, $file_path)
