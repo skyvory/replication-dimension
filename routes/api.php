@@ -42,5 +42,6 @@ $api->version('v1', [], function($api) {
 	$api->group(['prefix' => 'image'], function($api) {
 		$api->post('/load', 'App\Http\Controllers\ImageController@load');
 		$api->post('/metaOnly', 'App\Http\Controllers\ImageController@createMeta');
+		$api->delete('/{id}/block', 'App\Http\Controllers\ImageController@block');
 	});
 });

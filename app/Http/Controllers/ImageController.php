@@ -130,6 +130,19 @@ class ImageController extends Controller
 		]);
 	}
 
+	public function block($id) {
+		$image = Image::find($id);
+		$thread = Thread::find($image->thread_id);
+		$file_path = $thread->download_directory . '\\' . $image->name;
+		if(file_exists($file_path)) {
+			if(unlink($file_path)) {
+				$image->download_status = 2;
+				$image->save();
+			}
+		}
+		return response()->json(['meta' => ['message' => 'Delete and block success!']]);
+	}
+
 	protected function saveImage($url, $file_path)
 	{
 		try{
