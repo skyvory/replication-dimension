@@ -42,7 +42,7 @@ class ImageController extends Controller
 
 		# check if file already exist / downloaded
 		if(file_exists($file_path)) {
-			if($source_image_size == filesize($file_path)) {
+			if($source_image_size !== filesize($file_path)) {
 				$image = Image::where('thread_id', $thread_id)->where('url', $url)->where('download_status', 1)->first();
 				if($image->count() != 1) {
 					$image = new Image();
@@ -55,7 +55,7 @@ class ImageController extends Controller
 				}
 				return response()->json([
 					'data' => [
-						'id' => $image->id;
+						'id' => $image->id,
 						'name' => $image_name,
 						'size' => $source_image_size,
 						'thumb' => 'thumbnails/' . $thread_id . '/~thumb_' . $image_name,
@@ -65,6 +65,7 @@ class ImageController extends Controller
 					],
 				]);
 			}
+			# case where the source image has been modified somehow (size, resolution, or entirely different image with same name and url)
 			else {
 				# rename old file (before redownload the new one)
 				$exif = exif_read_data($file_path);
@@ -72,6 +73,10 @@ class ImageController extends Controller
 				$path_parts = pathinfo($file_path);
 				$new_file_path = $path_parts['dirname'] . '\\' . $path_parts['filename'] . '_' . $existing_image_date . '.' . $path_parts['extension'];
 				rename($file_path, $new_file_path);
+
+				$image = Image::where('thread_id', $thread_id)->where('url', $url)->where('download_status', 1)->first();
+				$image->download_status = 3;
+				$image->save();
 			}
 		}
 
