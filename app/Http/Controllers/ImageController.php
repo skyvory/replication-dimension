@@ -83,7 +83,7 @@ class ImageController extends Controller
 			$image->url = $url;
 			$image->size = $source_image_size;
 			$image->name = $image_name;
-			$download_status = 1;
+			$image->download_status = 1;
 			$image->save();
 		} catch (\Exception $e) {
 			throw new \Symfony\Component\HttpKernel\Exception\ConflictHttpException('Update failed!');
