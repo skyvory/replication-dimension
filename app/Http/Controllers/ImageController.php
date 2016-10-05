@@ -19,8 +19,8 @@ class ImageController extends Controller
 	public function load(Request $request)
 	{
 		$thread_id = $request->thread_id;
-		$url = 'http:\/\/t13.deviantart.net\/WiuBWCWrAe7FpG0hkSRa0FbWLcQ=\/fit-in\/150x150\/filters:no_upscale():origin()\/pre11\/3762\/th\/pre\/i\/2012\/302\/7\/b\/droid__by_pinkeyefloyd-d5jbay5.jpg';
-		// $url = stripcslashes($request->url);
+		// $url = 'http:\/\/t13.deviantart.net\/WiuBWCWrAe7FpG0hkSRa0FbWLcQ=\/fit-in\/150x150\/filters:no_upscale():origin()\/pre11\/3762\/th\/pre\/i\/2012\/302\/7\/b\/droid__by_pinkeyefloyd-d5jbay5.jpg';
+		$url = stripcslashes($request->url);
 		$url = stripcslashes($url);
 
 		$thread = Thread::find($thread_id);
