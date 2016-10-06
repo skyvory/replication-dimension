@@ -21,7 +21,7 @@ trait Writer
 	public function prepareDirectory($directory) {
 		try {
 			if(!is_dir($directory)) {
-				mkdir($directory);
+				mkdir($directory, 0777, true);
 			}
 		}
 		catch(\Exception $e) {
