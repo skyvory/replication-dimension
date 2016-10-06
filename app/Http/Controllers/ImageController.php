@@ -12,6 +12,7 @@ use App\Transformers\StateTransformer;
 use Dingo\Api\Routing\Helpers;
 use InterventionImage;
 use App\Http\Controllers\Writer;
+use Validator;
 
 class ImageController extends Controller
 {
@@ -21,6 +22,14 @@ class ImageController extends Controller
 
 	public function load(Request $request)
 	{
+		$validator = Validator::make($request->all(), [
+			'thread_id' => 'required|integer',
+			'url' => 'required|string',
+		]);
+		if($validator->fails()) {
+			throw new \Dingo\Api\Exception\ResourceException('Could not create new user.', $validator->errors());
+		}
+
 		$thread_id = $request->thread_id;
 		// $url = 'http:\/\/t13.deviantart.net\/WiuBWCWrAe7FpG0hkSRa0FbWLcQ=\/fit-in\/150x150\/filters:no_upscale():origin()\/pre11\/3762\/th\/pre\/i\/2012\/302\/7\/b\/droid__by_pinkeyefloyd-d5jbay5.jpg';
 		$url = stripcslashes($request->url);
