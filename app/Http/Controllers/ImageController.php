@@ -11,9 +11,12 @@ use App\Thread;
 use App\Transformers\StateTransformer;
 use Dingo\Api\Routing\Helpers;
 use InterventionImage;
+use App\Http\Controllers\Writer;
 
 class ImageController extends Controller
 {
+	use Writer;
+
 	public function __construct() {}
 
 	public function load(Request $request)
@@ -24,6 +27,9 @@ class ImageController extends Controller
 		$url = stripcslashes($url);
 
 		$thread = Thread::find($thread_id);
+
+		# prepare directory
+		$this->prepareDirectory($thread->download_directory);
 
 		# get image size
 		$headers = get_headers($url);
