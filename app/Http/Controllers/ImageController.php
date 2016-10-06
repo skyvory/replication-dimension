@@ -58,6 +58,9 @@ class ImageController extends Controller
 					$image->size = $source_image_size;
 					$image->download_status = 1;
 					$image->save();
+
+					// recreate thumbnail for the image as existing thumbnail exit on different thread folder
+					$this->materializeThumbnail($file_path,  'thumbnails/' . $thread_id . '/~thumb_' . $image_name);
 				}
 				return response()->json([
 					'data' => [
@@ -118,13 +121,8 @@ class ImageController extends Controller
 		if(!is_dir('thumbnails/' . $thread_id)) {
 			mkdir('thumbnails/' . $thread_id);
 		}
-		# thumbnail creation
-		$img = InterventionImage::make($file_path);
-		$img->resize(300, null, function($constraint) {
-			$constraint->aspectRatio();
-			$constraint->upsize();
-		});
-		$img->save('thumbnails/' . $thread_id . '/~thumb_' . $image_name, 50);
+
+		$this->materializeThumbnail($file_path, 'thumbnails/' . $thread_id . '/~thumb_' . $image_name);
 
 		return response()->json([
 			'data' => [

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use InterventionImage;
+
 trait Writer
 {
 	public function writeHtmlToDisk($content, $directory) {
@@ -28,6 +30,25 @@ trait Writer
 			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Directory preparation failed!');
 		}
 
+		return true;
+	}
+
+	public function materializeThumbnail($source_file_path, $thumbnail_file_path) {
+		// check if thumbnail already exists
+		if(file_exists($thumbnail_file_path)) {
+			return;
+		}
+		// 
+		if(!file_exists(dirname($thumbnail_file_path))) {
+			$this->prepareDirectory(dirname($thumbnail_file_path));
+		}
+		# thumbnail creation
+		$img = InterventionImage::make($source_file_path);
+		$img->resize(300, null, function($constraint) {
+			$constraint->aspectRatio();
+			$constraint->upsize();
+		});
+		$img->save($thumbnail_file_path, 50);
 		return true;
 	}
 }
