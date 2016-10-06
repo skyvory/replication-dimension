@@ -48,9 +48,9 @@ class ImageController extends Controller
 
 		# check if file already exist / downloaded
 		if(file_exists($file_path)) {
-			if($source_image_size !== filesize($file_path)) {
+			if($source_image_size == filesize($file_path)) {
 				$image = Image::where('thread_id', $thread_id)->where('url', $url)->where('download_status', 1)->first();
-				if($image->count() != 1) {
+				if($image == null || $image->count() != 1) {
 					$image = new Image();
 					$image->thread_id = $thread_id;
 					$image->name = $image_name;
