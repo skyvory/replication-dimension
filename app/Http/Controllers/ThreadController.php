@@ -80,7 +80,8 @@ class ThreadController extends Controller
 			'data' => array(
 				'thread' => array(
 					'id' => $thread->id,
-					'name' => $thread_name
+					'name' => $thread_name,
+					'last_update' => $thread->last_update,
 					),
 				'images' => $images
 				)
