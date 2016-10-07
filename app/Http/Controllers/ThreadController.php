@@ -146,7 +146,7 @@ class ThreadController extends Controller
 	}
 
 	public function getSavedImages($id) {
-		$images = Image::where('thread_id', $id)->get();
+		$images = Image::where('thread_id', $id)->where('download_status', 1)->get();
 		return response()->json(['data' => ['images' => $images]]);
 	}
 
