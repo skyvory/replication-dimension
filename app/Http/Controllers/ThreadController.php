@@ -151,7 +151,7 @@ class ThreadController extends Controller
 	}
 
 	public function loadNewImagesList($id) {
-		$existing_images = Image::where('thread_id', $id)->get();
+		$existing_images = Image::where('thread_id', $id)->whereIn('download_status', array(1,2))->get();
 		$existing_images_urls = array();
 		foreach ($existing_images as $img) {
 			$existing_images_urls[] = $img['url'];
