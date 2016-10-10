@@ -1,0 +1,785 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="Content-type" content="text/html; charset=Shift_JIS"><meta http-equiv="Content-Script-Type" content="text/javascript"><meta http-equiv="Content-Style-Type" content="text/css">
+<base href="http://jun.2chan.net/b/">
+<link href="/bin/style4.css?3" rel="stylesheet" type="text/css"><title>ちわー壁紙屋です遅く - 二次元裏＠ふたば</title><script type="text/javascript" src="/bin/swfobject.js"></script><script type="text/javascript" src="/bin/fp.js?9"></script><script type="text/javascript" src="/bin/cachemt7.php"></script><script type="text/javascript"><!--
+var b="b";
+//--></script><script type="text/javascript" src="/bin/base4.js?h"></script>
+
+<script type="text/javascript">
+function sd(sno){
+  var xmlhttp = false;
+  if(typeof ActiveXObject != "undefined"){
+    try {
+      xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    } catch (e) {
+      xmlhttp = false;
+    }
+  }
+  if(!xmlhttp && typeof XMLHttpRequest != "undefined") {
+    xmlhttp = new XMLHttpRequest();
+  }
+  xmlhttp.open("GET", "/sd.php?"+b+"."+sno);
+  xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 ) {
+      var i=parseInt(xmlhttp.responseText,10);
+      if(isNaN(i)){i=0;}
+      document.getElementById("sd"+sno).innerHTML="そうだねx"+i;
+    }
+  }
+  xmlhttp.send(null);
+  return false;
+}
+
+(function(){
+	var Ad,adThread;
+	if(typeof Ad==="undefined"||Ad===null){Ad={};}
+	if(Ad.Thread==null){Ad.Thread={};}
+	Ad.Thread=(
+		function(){
+			function Thread(){}
+			Thread.prototype.onScroll=function(){
+				var right_ads,right_ad_top,scrollTop,contresoffset,rightadfloatob;
+				scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+				right_ads=document.getElementById("rightad");
+				if(!right_ads){return;}
+				right_ad_top=right_ads.offsetTop;//下の起点
+				rightadfloatob=document.getElementById("rightadfloat");
+				contresoffset=document.getElementById("radtop").offsetTop;
+				if(scrollTop<=contresoffset-20){
+					rightadfloatob.className="rad radabsb";
+					rightadfloatob.style.top=contresoffset+"px";
+				}else{
+					rightadfloatob.className=(scrollTop<=right_ad_top-620?"rad radfix":"rad radabs");
+					rightadfloatob.style.top="";
+				}
+			};
+			return Thread;
+		}
+	)();
+	adThread=new Ad.Thread();
+  if(navigator.userAgent) {
+/*    if(!navigator.userAgent.match(/AppleWebkit\/(52|53[0-6])/i)){*/
+		if(screen.width>970 && window.innerWidth>970){
+			if(window.addEventListener){
+				window.addEventListener("scroll",adThread.onScroll,false);
+			}else if(window.attachEvent){
+				window.attachEvent("onscroll",adThread.onScroll);
+			}else{
+				window.onscroll=adThread.onScroll;
+			}
+		}
+	}
+}).call(this);
+</script>
+
+<script type="text/javascript">
+var microadCompass = microadCompass || {};
+microadCompass.queue = microadCompass.queue || [];
+</script>
+<script type="text/javascript" charset="UTF-8" src="//j.microad.net/js/compass.js" onload="new microadCompass.AdInitializer().initialize();" async=""></script>
+
+<style type="text/css">
+.sod{color:#800000;font-size:100%;text-decoration: none;padding:0 8px;white-space:nowrap;}
+.rtd{max-width:800px;padding-right:8px;background-color:#F0E0D6;}
+.rts{width:18px;vertical-align:top;}
+.thre table{border:none;margin-right:170px;min-width:480px;}
+.rad{width:160px;height:600px;margin:2px;right:10px;}
+.radfix{position:fixed;top:20px;}
+.radabs{position:absolute;margin-top:-600px;}
+.radabsb{position:absolute;margin-top:0px;}
+@media screen and (max-width: 970px) {
+.radfix,.radabs,.radabsb{position:static;margin-top:2px;}
+.thre table{border:none;margin-right:0px;}
+}
+</style>
+<style type="text/css" media="screen">#usercounter {visibility:hidden}</style></head>
+<body bgcolor="#FFFFEE" text="#800000" link="#0000EE" vlink="#0000EE" alink="#FF0000"><div style="width:728px;height:90px;margin:2px auto"><iframe width="728" height="90" src="http://free2.jp/2chan_1/" frameborder="0" allowfullscreen=""></iframe></div><p id="hdp"><span id="tit">二次元裏＠ふたば</span><span id="hml">[<a href="http://www.2chan.net/" target="_top">ホーム</a>]</span></p>
+<hr width="90%" size="1">
+[<a href="futaba.htm">掲示板に戻る</a>]
+<table width="100%"><tbody><tr><th bgcolor="#e04000">
+<font color="#FFFFFF">レス送信モード</font>
+</th></tr></tbody></table>
+
+<form action="futaba.php?guid=on" method="POST" enctype="multipart/form-data">
+<input type="hidden" name="mode" value="regist">
+
+<input type="hidden" name="MAX_FILE_SIZE" value="2048000">
+<input type="hidden" id="baseform" name="baseform" value=""><input type="hidden" id="pthb" name="pthb" value="">
+<input type="hidden" id="pthc" name="pthc" value="">
+<input type="hidden" id="pthd" name="pthd" value="">
+<input type="hidden" id="ptua" name="ptua" value="228541545944">
+<input type="hidden" id="flrv" name="flrv" value="3645482818">
+<input type="hidden" id="flvv" name="flvv" value="750175768">
+<input type="hidden" id="scsz" name="scsz" value="">
+<input type="hidden" id="js" name="js" value="off">
+<input type="hidden" name="resto" value="21133354">
+<table class="ftbl" id="ftbl"><tbody><tr><td class="ftdc"><b>おなまえ</b></td><td><input type="text" name="name" size="28"></td></tr>
+<tr><td class="ftdc"><b>E-mail</b></td><td><input type="text" name="email" size="28"></td></tr>
+<tr><td class="ftdc"><b>題　　名</b></td><td><input type="text" name="sub" size="35"><input type="submit" value="返信する" onclick="ptfk(21133354)"></td></tr>
+<tr><td class="ftdc"><b>コメント</b><script language="JavaScript" type="text/javascript"><!--
+if(FlashPlayerVer()){document.write('<br><br><span id="oebtn" onclick="ChangeDraw()">手書き<\/span>')}//--></script></td><td><div id="swfContents"></div><textarea name="com" cols="48" rows="4" id="ftxa"></textarea></td></tr>
+<tr><td class="ftdc"><b>添付File</b></td>
+<td><input type="file" name="upfile" size="35">
+[<label><input type="checkbox" name="textonly" value="on">画像なし</label>]</td></tr>
+<tr><td class="ftdc"><b>削除キー</b></td><td><input type="password" name="pwd" size="8" maxlength="12" value=""><small>(記事の削除用。英数字で8文字以内) <script type="text/javascript"><!--
+document.write('<span id="reszb" onclick="reszx()">フォーム位置切替<\/span>')//--></script><span id="reszb" onclick="reszx()">フォーム位置切替</span>
+</small><div id="usercounter" style="visibility: visible;"></div></td></tr></tbody></table><table class="ftbl">
+<tbody><tr><td colspan="2" class="chui"><ul>
+<li>添付可能：GIF, JPG, PNG. 2000KBまで. 250x250以上は縮小.</li>
+<li>現在150人くらいが見てます.<a href="futaba.php?mode=cat">カタログ</a> <a href="futaba.php?mode=cat&amp;sort=1">新順</a> <a href="futaba.php?mode=cat&amp;sort=2">古順</a> <a href="futaba.php?mode=cat&amp;sort=3">多順</a> <a href="futaba.php?mode=cat&amp;sort=4">少順</a> <a href="futaba.php?mode=cat&amp;sort=9&amp;guid=on">履歴</a>
+</li><li>スレッドを立てた人がレスを削除してスレッド内に限ってアク禁にできます.</li>
+<li>メール欄に「id表示」と入れてスレッドを立てるとスレッド全部をid表示にできます.</li>
+<li>メール欄に「ip表示」と入れてスレッドを立てるとスレッド全部をip表示にできます.</li>
+<li>政治はだめ. 同人関連のアップロード依頼はだめ.</li>
+<li>管理人への連絡は<a href="http://jun.2chan.net/junbi/futaba.htm">準備板</a> <a href="http://jun.2chan.net/formail.php">ご意見</a>へ. 削除依頼は記事番号の右の<u>del</u>を押して下さい.</li><li><a href="http://www.2chan.net/ktinv.htm" target="_blank">スマホ・携帯ふたば入口</a> 
+この板の保存数は8000件です. <a href="http://www.2chan.net/kiyaku.htm" target="_blank">規約</a></li>
+<li><span style="font-size: 150%;">新しい板:
+<a href="http://may.2chan.net/webm/futaba.htm">webm</a>
+<a href="http://dec.2chan.net/52/futaba.htm">地震</a>
+<a href="http://dec.2chan.net/70/futaba.htm">新板提案</a>
+<a href="http://www.2chan.net/hinan/futaba.htm">避難所</a>
+</span></li>
+</ul></td></tr></tbody></table></form><div style="width:728px;margin:2px auto;"><br><!--ヘッダ広告ここから↓-->
+<div style="width:610px;margin: 0 auto;">
+<div style="width:300px;height:250px;margin:2px;float:left;"><iframe frameborder="0" width="300" height="250" src="http://dec.2chan.net/bin/headrect.htm?161007a"></iframe></div>
+<div style="width:300px;height:250px;margin:2px;float:left;"><iframe frameborder="0" width="300" height="250" src="http://dec.2chan.net/bin/headrect.htm?161007b"></iframe></div>
+<div style="clear:both;"></div></div>
+<!--ヘッダ広告ここまで↑-->
+</div><script type="text/javascript"><!--
+l();ucount();
+--></script><noscript>&lt;img src="http://dec.2chan.net/bin/uucount.php?568" width=2 height=2 alt=""&gt;</noscript><img src="/bin/uuacount.php?248" width="2" height="2" alt="">
+<hr><form action="futaba.php?guid=on" method="POST"><!--広告:::--><div class="tue"><div style="width:728px;height:90px;margin:2px"><iframe src="/bin/tueif.htm?160829" frameborder="0" scrolling="no" width="728" height="90"></iframe></div></div><div class="thre">画像ファイル名：<a href="http://jun.2chan.net/b/src/1476002023381.jpg" target="_blank">1476002023381.jpg</a>-(290943 B)<small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002023381.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002023381s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="290943 B"></a><input type="checkbox" name="21133354" value="delete" id="delcheck21133354"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:33:43 No.21133354 <a class="del" href="javascript:void(0);" onclick="del(21133354);return(false);">del</a>
+<small>15日06:07頃消えます</small>
+<blockquote>ちわー<br>壁紙屋です<br>遅くなりましたが今回は秋の壁紙スレで<br>開店させてもらいます(∩_∩)ゞ</blockquote><div id="radtop"></div><span id="ddel">削除された記事が<span id="ddnum">1</span>件あります.<span id="ddbut" onclick="onddbut()">見る</span><br></span>
+<table border="0" class="deleted"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133357" value="delete" id="delcheck21133357"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:34:48 No.21133357 <a class="del" href="javascript:void(0);" onclick="del(21133357);return(false);">del</a>
+<blockquote><font color="#ff0000">スレッドを立てた人によって削除されました</font></blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133360" value="delete" id="delcheck21133360"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:36:24 No.21133360 <a class="del" href="javascript:void(0);" onclick="del(21133360);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002184774.jpg" target="_blank">1476002184774.jpg</a>-(342399 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002184774.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002184774s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="342399 B"></a><blockquote style="margin-left:290px;">それじゃあまったり自演を(∩_∩)ゞ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133361" value="delete" id="delcheck21133361"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:37:14 No.21133361 <a class="del" href="javascript:void(0);" onclick="del(21133361);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002234669.jpg" target="_blank">1476002234669.jpg</a>-(211338 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002234669.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002234669s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="211338 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133365" value="delete" id="delcheck21133365"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:38:30 No.21133365 <a class="del" href="javascript:void(0);" onclick="del(21133365);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002310621.jpg" target="_blank">1476002310621.jpg</a>-(482254 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002310621.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002310621s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="482254 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133367" value="delete" id="delcheck21133367"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:38:57 No.21133367 <a class="del" href="javascript:void(0);" onclick="del(21133367);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002337315.jpg" target="_blank">1476002337315.jpg</a>-(196841 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002337315.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002337315s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="196841 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133371" value="delete" id="delcheck21133371"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:40:46 No.21133371 <a class="del" href="javascript:void(0);" onclick="del(21133371);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002446217.jpg" target="_blank">1476002446217.jpg</a>-(120355 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002446217.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002446217s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="120355 B"></a><blockquote style="margin-left:290px;">自演<br><br>今年は10月になっても日中三十℃超えのとこが多く<br>まだ夏を残しているような感じですね</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133373" value="delete" id="delcheck21133373"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:41:26 No.21133373 <a class="del" href="javascript:void(0);" onclick="del(21133373);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002486170.jpg" target="_blank">1476002486170.jpg</a>-(173505 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002486170.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002486170s.jpg" border="0" align="left" width="250" height="166" hspace="20" alt="173505 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133376" value="delete" id="delcheck21133376"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:42:37 No.21133376 <a class="del" href="javascript:void(0);" onclick="del(21133376);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002557243.jpg" target="_blank">1476002557243.jpg</a>-(127579 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002557243.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002557243s.jpg" border="0" align="left" width="250" height="200" hspace="20" alt="127579 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133382" value="delete" id="delcheck21133382"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:44:21 No.21133382 <a class="del" href="javascript:void(0);" onclick="del(21133382);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002661901.jpg" target="_blank">1476002661901.jpg</a>-(294005 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002661901.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002661901s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="294005 B"></a><blockquote style="margin-left:290px;">自演<br><br>秋の味覚の柿はビタミンＣの宝庫で<br>口臭消しの効果も高いそうです</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133386" value="delete" id="delcheck21133386"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:45:39 No.21133386 <a class="del" href="javascript:void(0);" onclick="del(21133386);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002739785.jpg" target="_blank">1476002739785.jpg</a>-(198179 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002739785.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002739785s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="198179 B"></a><blockquote style="margin-left:291px;">自演<br><br>食欲の秋でもありますね</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133391" value="delete" id="delcheck21133391"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:47:00 No.21133391 <a class="del" href="javascript:void(0);" onclick="del(21133391);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002820977.jpg" target="_blank">1476002820977.jpg</a>-(293707 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002820977.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002820977s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="293707 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133394" value="delete" id="delcheck21133394"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:47:25 No.21133394 <a class="del" href="javascript:void(0);" onclick="del(21133394);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002845128.jpg" target="_blank">1476002845128.jpg</a>-(150640 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002845128.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002845128s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="150640 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133397" value="delete" id="delcheck21133397"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:47:54 No.21133397 <a class="del" href="javascript:void(0);" onclick="del(21133397);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002874603.jpg" target="_blank">1476002874603.jpg</a>-(149432 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002874603.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002874603s.jpg" border="0" align="left" width="250" height="160" hspace="20" alt="149432 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133398" value="delete" id="delcheck21133398"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:48:57 No.21133398 <a class="del" href="javascript:void(0);" onclick="del(21133398);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476002937530.jpg" target="_blank">1476002937530.jpg</a>-(417671 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476002937530.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476002937530s.jpg" border="0" align="left" width="250" height="166" hspace="20" alt="417671 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133404" value="delete" id="delcheck21133404"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:52:21 No.21133404 <a class="del" href="javascript:void(0);" onclick="del(21133404);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476003141152.jpg" target="_blank">1476003141152.jpg</a>-(973349 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476003141152.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476003141152s.jpg" border="0" align="left" width="251" height="188" hspace="20" alt="973349 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133407" value="delete" id="delcheck21133407"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:53:36 No.21133407 <a class="del" href="javascript:void(0);" onclick="del(21133407);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476003216059.jpg" target="_blank">1476003216059.jpg</a>-(383092 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476003216059.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476003216059s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="383092 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133412" value="delete" id="delcheck21133412"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:54:09 No.21133412 <a class="del" href="javascript:void(0);" onclick="del(21133412);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476003249907.jpg" target="_blank">1476003249907.jpg</a>-(259613 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476003249907.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476003249907s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="259613 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133414" value="delete" id="delcheck21133414"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:54:47 No.21133414 <a class="del" href="javascript:void(0);" onclick="del(21133414);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476003287362.jpg" target="_blank">1476003287362.jpg</a>-(448251 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476003287362.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476003287362s.jpg" border="0" align="left" width="251" height="167" hspace="20" alt="448251 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133418" value="delete" id="delcheck21133418"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)17:55:30 No.21133418 <a class="del" href="javascript:void(0);" onclick="del(21133418);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476003330168.jpg" target="_blank">1476003330168.jpg</a>-(591213 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476003330168.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476003330168s.jpg" border="0" align="left" width="250" height="165" hspace="20" alt="591213 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133427" value="delete" id="delcheck21133427"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:02:50 No.21133427 <a class="del" href="javascript:void(0);" onclick="del(21133427);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476003770517.jpg" target="_blank">1476003770517.jpg</a>-(738425 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476003770517.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476003770517s.jpg" border="0" align="left" width="250" height="165" hspace="20" alt="738425 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133438" value="delete" id="delcheck21133438"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:06:22 No.21133438 <a class="del" href="javascript:void(0);" onclick="del(21133438);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476003982150.jpg" target="_blank">1476003982150.jpg</a>-(120186 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476003982150.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476003982150s.jpg" border="0" align="left" width="250" height="157" hspace="20" alt="120186 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133445" value="delete" id="delcheck21133445"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:09:10 No.21133445 <a class="del" href="javascript:void(0);" onclick="del(21133445);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476004150888.jpg" target="_blank">1476004150888.jpg</a>-(447228 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476004150888.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476004150888s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="447228 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133453" value="delete" id="delcheck21133453"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:10:28 No.21133453 <a class="del" href="javascript:void(0);" onclick="del(21133453);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476004228199.jpg" target="_blank">1476004228199.jpg</a>-(933027 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476004228199.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476004228199s.jpg" border="0" align="left" width="251" height="188" hspace="20" alt="933027 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133461" value="delete" id="delcheck21133461"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:11:33 No.21133461 <a class="del" href="javascript:void(0);" onclick="del(21133461);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476004293793.jpg" target="_blank">1476004293793.jpg</a>-(437093 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476004293793.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476004293793s.jpg" border="0" align="left" width="251" height="167" hspace="20" alt="437093 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133463" value="delete" id="delcheck21133463"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:12:38 No.21133463 <a class="del" href="javascript:void(0);" onclick="del(21133463);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476004358292.jpg" target="_blank">1476004358292.jpg</a>-(298358 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476004358292.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476004358292s.jpg" border="0" align="left" width="250" height="173" hspace="20" alt="298358 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133469" value="delete" id="delcheck21133469"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:14:49 No.21133469 <a class="del" href="javascript:void(0);" onclick="del(21133469);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476004489450.jpg" target="_blank">1476004489450.jpg</a>-(865577 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476004489450.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476004489450s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="865577 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133474" value="delete" id="delcheck21133474"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:15:25 No.21133474 <a class="del" href="javascript:void(0);" onclick="del(21133474);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476004525339.jpg" target="_blank">1476004525339.jpg</a>-(404707 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476004525339.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476004525339s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="404707 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133481" value="delete" id="delcheck21133481"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:19:46 No.21133481 <a class="del" href="javascript:void(0);" onclick="del(21133481);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476004786036.jpg" target="_blank">1476004786036.jpg</a>-(382874 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476004786036.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476004786036s.jpg" border="0" align="left" width="250" height="157" hspace="20" alt="382874 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133525" value="delete" id="delcheck21133525"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:40:37 No.21133525 <a class="del" href="javascript:void(0);" onclick="del(21133525);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476006037996.jpg" target="_blank">1476006037996.jpg</a>-(583903 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476006037996.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476006037996s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="583903 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133526" value="delete" id="delcheck21133526"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:41:02 No.21133526 <a class="del" href="javascript:void(0);" onclick="del(21133526);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476006062270.jpg" target="_blank">1476006062270.jpg</a>-(201336 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476006062270.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476006062270s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="201336 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133545" value="delete" id="delcheck21133545"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:48:31 No.21133545 <a class="del" href="javascript:void(0);" onclick="del(21133545);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476006511425.jpg" target="_blank">1476006511425.jpg</a>-(236778 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476006511425.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476006511425s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="236778 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133546" value="delete" id="delcheck21133546"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:48:59 No.21133546 <a class="del" href="javascript:void(0);" onclick="del(21133546);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476006539295.jpg" target="_blank">1476006539295.jpg</a>-(290121 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476006539295.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476006539295s.jpg" border="0" align="left" width="250" height="145" hspace="20" alt="290121 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133554" value="delete" id="delcheck21133554"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)18:51:52 No.21133554 <a class="del" href="javascript:void(0);" onclick="del(21133554);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476006712790.jpg" target="_blank">1476006712790.jpg</a>-(221336 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476006712790.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476006712790s.jpg" border="0" align="left" width="250" height="225" hspace="20" alt="221336 B"></a><blockquote style="margin-left:290px;">店主さん、こんばんは<br><br>スレ立てお疲れ様です<br><br>やっと涼しくなってきましたね<br><br>夜はちょっと寒いので<br>風邪を引かないようにお気を付けください<br><br>ではでは ﾉｼ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133582" value="delete" id="delcheck21133582"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:01:11 No.21133582 <a class="del" href="javascript:void(0);" onclick="del(21133582);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476007271136.jpg" target="_blank">1476007271136.jpg</a>-(334559 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476007271136.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476007271136s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="334559 B"></a><blockquote style="margin-left:290px;">そろそろ安くなってくるかなぁ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133583" value="delete" id="delcheck21133583"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:01:49 No.21133583 <a class="del" href="javascript:void(0);" onclick="del(21133583);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476007309273.jpg" target="_blank">1476007309273.jpg</a>-(411465 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476007309273.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476007309273s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="411465 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133589" value="delete" id="delcheck21133589"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:04:07 No.21133589 <a class="del" href="javascript:void(0);" onclick="del(21133589);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476007447592.jpg" target="_blank">1476007447592.jpg</a>-(358866 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476007447592.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476007447592s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="358866 B"></a><blockquote style="margin-left:291px;">No.21133554さん<br>No.21133582さん<br><br>今晩は(∩_∩)ゞ<br>レスどうもです<br>食欲の秋らしい壁紙私怨ありがとうございます</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133590" value="delete" id="delcheck21133590"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:04:52 No.21133590 <a class="del" href="javascript:void(0);" onclick="del(21133590);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476007492334.jpg" target="_blank">1476007492334.jpg</a>-(227009 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476007492334.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476007492334s.jpg" border="0" align="left" width="250" height="173" hspace="20" alt="227009 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133593" value="delete" id="delcheck21133593"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:05:11 No.21133593 <a class="del" href="javascript:void(0);" onclick="del(21133593);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476007511478.jpg" target="_blank">1476007511478.jpg</a>-(415248 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476007511478.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476007511478s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="415248 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133594" value="delete" id="delcheck21133594"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:06:20 No.21133594 <a class="del" href="javascript:void(0);" onclick="del(21133594);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476007580659.jpg" target="_blank">1476007580659.jpg</a>-(202034 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476007580659.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476007580659s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="202034 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133595" value="delete" id="delcheck21133595"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:06:36 No.21133595 <a class="del" href="javascript:void(0);" onclick="del(21133595);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476007596818.jpg" target="_blank">1476007596818.jpg</a>-(645630 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476007596818.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476007596818s.jpg" border="0" align="left" width="250" height="166" hspace="20" alt="645630 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133599" value="delete" id="delcheck21133599"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:08:00 No.21133599 <a class="del" href="javascript:void(0);" onclick="del(21133599);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476007680318.jpg" target="_blank">1476007680318.jpg</a>-(226142 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476007680318.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476007680318s.jpg" border="0" align="left" width="250" height="147" hspace="20" alt="226142 B"></a><blockquote style="margin-left:290px;">ｷﾀ━━━(ﾟ∀ﾟ)━━━!!</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133609" value="delete" id="delcheck21133609"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:11:34 No.21133609 <a class="del" href="javascript:void(0);" onclick="del(21133609);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476007894469.jpg" target="_blank">1476007894469.jpg</a>-(264162 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476007894469.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476007894469s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="264162 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133615" value="delete" id="delcheck21133615"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:12:45 No.21133615 <a class="del" href="javascript:void(0);" onclick="del(21133615);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476007965387.jpg" target="_blank">1476007965387.jpg</a>-(266683 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476007965387.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476007965387s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="266683 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133617" value="delete" id="delcheck21133617"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:13:27 No.21133617 <a class="del" href="javascript:void(0);" onclick="del(21133617);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476008007592.jpg" target="_blank">1476008007592.jpg</a>-(232164 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476008007592.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476008007592s.jpg" border="0" align="left" width="250" height="157" hspace="20" alt="232164 B"></a><blockquote style="margin-left:290px;">自演<br><br>二次支援どうも<br>今回は二次あまり用意出来なかったので<br>助かります(∩_∩)ゞ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133618" value="delete" id="delcheck21133618"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:13:59 No.21133618 <a class="del" href="javascript:void(0);" onclick="del(21133618);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476008039687.jpg" target="_blank">1476008039687.jpg</a>-(471550 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476008039687.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476008039687s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="471550 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133620" value="delete" id="delcheck21133620"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:15:09 No.21133620 <a class="del" href="javascript:void(0);" onclick="del(21133620);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476008109127.jpg" target="_blank">1476008109127.jpg</a>-(532175 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476008109127.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476008109127s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="532175 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133621" value="delete" id="delcheck21133621"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:16:55 No.21133621 <a class="del" href="javascript:void(0);" onclick="del(21133621);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476008215455.jpg" target="_blank">1476008215455.jpg</a>-(264312 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476008215455.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476008215455s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="264312 B"></a><blockquote style="margin-left:291px;">そろそろ収穫して樽詰めかな</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133623" value="delete" id="delcheck21133623"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:18:05 No.21133623 <a class="del" href="javascript:void(0);" onclick="del(21133623);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476008285124.jpg" target="_blank">1476008285124.jpg</a>-(417090 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476008285124.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476008285124s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="417090 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133627" value="delete" id="delcheck21133627"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:19:39 No.21133627 <a class="del" href="javascript:void(0);" onclick="del(21133627);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476008379534.jpg" target="_blank">1476008379534.jpg</a>-(755464 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476008379534.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476008379534s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="755464 B"></a><blockquote style="margin-left:291px;">自演<br><br><font color="#789922">&gt;そろそろ収穫して樽詰めかな</font><br>今年は異常気候が多かったからどうでしょうかね<br>出来とかに影響出ないといいのですが</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133629" value="delete" id="delcheck21133629"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:20:14 No.21133629 <a class="del" href="javascript:void(0);" onclick="del(21133629);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476008414778.jpg" target="_blank">1476008414778.jpg</a>-(83431 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476008414778.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476008414778s.jpg" border="0" align="left" width="250" height="157" hspace="20" alt="83431 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133637" value="delete" id="delcheck21133637"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:26:34 No.21133637 <a class="del" href="javascript:void(0);" onclick="del(21133637);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476008794876.jpg" target="_blank">1476008794876.jpg</a>-(384882 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476008794876.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476008794876s.jpg" border="0" align="left" width="250" height="157" hspace="20" alt="384882 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133642" value="delete" id="delcheck21133642"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:28:21 No.21133642 <a class="del" href="javascript:void(0);" onclick="del(21133642);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476008901098.jpg" target="_blank">1476008901098.jpg</a>-(444611 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476008901098.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476008901098s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="444611 B"></a><blockquote style="margin-left:291px;">温かいお茶もありがたくなってきた</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133643" value="delete" id="delcheck21133643"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:28:28 No.21133643 <a class="del" href="javascript:void(0);" onclick="del(21133643);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476008908081.jpg" target="_blank">1476008908081.jpg</a>-(355277 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476008908081.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476008908081s.jpg" border="0" align="left" width="250" height="169" hspace="20" alt="355277 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133647" value="delete" id="delcheck21133647"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:30:22 No.21133647 <a class="del" href="javascript:void(0);" onclick="del(21133647);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476009022173.jpg" target="_blank">1476009022173.jpg</a>-(401417 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476009022173.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476009022173s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="401417 B"></a><blockquote style="margin-left:291px;">自演<br><br><font color="#789922">&gt;温かいお茶もありがたくなってきた</font><br><br>九州なんですが、こちらはまだ夜もけっこう暑いですね<br>でも明日辺りから日中や夜も涼しくなりそうで<br>温かいお茶が楽しめそうです(・∀・)</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133651" value="delete" id="delcheck21133651"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:31:20 No.21133651 <a class="del" href="javascript:void(0);" onclick="del(21133651);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476009080074.jpg" target="_blank">1476009080074.jpg</a>-(414358 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476009080074.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476009080074s.jpg" border="0" align="left" width="250" height="132" hspace="20" alt="414358 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133654" value="delete" id="delcheck21133654"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:31:50 No.21133654 <a class="del" href="javascript:void(0);" onclick="del(21133654);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476009110892.jpg" target="_blank">1476009110892.jpg</a>-(356700 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476009110892.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476009110892s.jpg" border="0" align="left" width="250" height="200" hspace="20" alt="356700 B"></a><blockquote style="margin-left:290px;">天高く牛肥ゆる秋　</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133658" value="delete" id="delcheck21133658"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:33:04 No.21133658 <a class="del" href="javascript:void(0);" onclick="del(21133658);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476009184565.jpg" target="_blank">1476009184565.jpg</a>-(422879 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476009184565.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476009184565s.jpg" border="0" align="left" width="251" height="124" hspace="20" alt="422879 B"></a><blockquote style="margin-left:291px;">自演<br><br><font color="#789922">&gt;天高く牛肥ゆる秋　</font><br><br>美味そうですね<br>キノコとかもこの季節は美味しくなりますよね</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133659" value="delete" id="delcheck21133659"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:33:57 No.21133659 <a class="del" href="javascript:void(0);" onclick="del(21133659);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476009237888.jpg" target="_blank">1476009237888.jpg</a>-(244417 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476009237888.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476009237888s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="244417 B"></a><blockquote style="margin-left:291px;">自演<br><br>今年は冬も暖冬になるかな…</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133668" value="delete" id="delcheck21133668"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:37:15 No.21133668 <a class="del" href="javascript:void(0);" onclick="del(21133668);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476009435269.jpg" target="_blank">1476009435269.jpg</a>-(465065 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476009435269.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476009435269s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="465065 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133670" value="delete" id="delcheck21133670"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:38:24 No.21133670 <a class="del" href="javascript:void(0);" onclick="del(21133670);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476009504822.jpg" target="_blank">1476009504822.jpg</a>-(1006272 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476009504822.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476009504822s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="1006272 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133677" value="delete" id="delcheck21133677"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:40:54 No.21133677 <a class="del" href="javascript:void(0);" onclick="del(21133677);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476009654937.jpg" target="_blank">1476009654937.jpg</a>-(39912 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476009654937.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476009654937s.jpg" border="0" align="left" width="251" height="188" hspace="20" alt="39912 B"></a><blockquote style="margin-left:291px;">ホットカクテルも呑みだせる時期</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133692" value="delete" id="delcheck21133692"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:49:42 No.21133692 <a class="del" href="javascript:void(0);" onclick="del(21133692);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476010182503.jpg" target="_blank">1476010182503.jpg</a>-(211925 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476010182503.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476010182503s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="211925 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133695" value="delete" id="delcheck21133695"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:50:41 No.21133695 <a class="del" href="javascript:void(0);" onclick="del(21133695);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476010241326.jpg" target="_blank">1476010241326.jpg</a>-(891514 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476010241326.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476010241326s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="891514 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133701" value="delete" id="delcheck21133701"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:56:06 No.21133701 <a class="del" href="javascript:void(0);" onclick="del(21133701);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476010566323.jpg" target="_blank">1476010566323.jpg</a>-(445432 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476010566323.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476010566323s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="445432 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133704" value="delete" id="delcheck21133704"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)19:57:35 No.21133704 <a class="del" href="javascript:void(0);" onclick="del(21133704);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476010655692.jpg" target="_blank">1476010655692.jpg</a>-(411597 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476010655692.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476010655692s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="411597 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133711" value="delete" id="delcheck21133711"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:00:14 No.21133711 <a class="del" href="javascript:void(0);" onclick="del(21133711);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476010814101.jpg" target="_blank">1476010814101.jpg</a>-(734024 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476010814101.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476010814101s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="734024 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133715" value="delete" id="delcheck21133715"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:01:59 No.21133715 <a class="del" href="javascript:void(0);" onclick="del(21133715);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476010919916.jpg" target="_blank">1476010919916.jpg</a>-(84168 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476010919916.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476010919916s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="84168 B"></a><blockquote style="margin-left:290px;"><font color="#789922">&gt;ホットカクテルも呑みだせる時期 </font><br>でも温かいところであえてロック</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133725" value="delete" id="delcheck21133725"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:03:41 No.21133725 <a class="del" href="javascript:void(0);" onclick="del(21133725);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476011021903.jpg" target="_blank">1476011021903.jpg</a>-(1387639 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476011021903.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476011021903s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="1387639 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133730" value="delete" id="delcheck21133730"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:04:27 No.21133730 <a class="del" href="javascript:void(0);" onclick="del(21133730);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476011067090.jpg" target="_blank">1476011067090.jpg</a>-(166931 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476011067090.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476011067090s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="166931 B"></a><blockquote style="margin-left:290px;">自演<br><br>秋の夜長にお酒と読書もいいですね</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133742" value="delete" id="delcheck21133742"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:06:38 No.21133742 <a class="del" href="javascript:void(0);" onclick="del(21133742);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476011198860.jpg" target="_blank">1476011198860.jpg</a>-(746926 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476011198860.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476011198860s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="746926 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133758" value="delete" id="delcheck21133758"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:10:32 No.21133758 <a class="del" href="javascript:void(0);" onclick="del(21133758);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476011432566.jpg" target="_blank">1476011432566.jpg</a>-(50469 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476011432566.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476011432566s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="50469 B"></a><blockquote style="margin-left:290px;">今日子供と名作劇場の南の島のルーシーを見てたんだが<br>ルーシー役の松島みのりの声が釘宮理恵に聞こえて仕方がなかった<br>全然似てないのになぜかそう感じる不思議な気持ちになったよ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133770" value="delete" id="delcheck21133770"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:13:32 No.21133770 <a class="del" href="javascript:void(0);" onclick="del(21133770);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476011612042.jpg" target="_blank">1476011612042.jpg</a>-(412270 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476011612042.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476011612042s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="412270 B"></a><blockquote style="margin-left:290px;">高揚を愛でながら人肌のぬる燗</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133775" value="delete" id="delcheck21133775"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:15:33 No.21133775 <a class="del" href="javascript:void(0);" onclick="del(21133775);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476011733642.jpg" target="_blank">1476011733642.jpg</a>-(206327 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476011733642.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476011733642s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="206327 B"></a><blockquote style="margin-left:290px;">自演<br><br>それはきっと空耳効果だとｗ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133824" value="delete" id="delcheck21133824"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:33:00 No.21133824 <a class="del" href="javascript:void(0);" onclick="del(21133824);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476012780179.jpg" target="_blank">1476012780179.jpg</a>-(283204 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476012780179.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476012780179s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="283204 B"></a><blockquote style="margin-left:290px;"><font color="#789922">&gt;高揚を愛でながら人肌のぬる燗 </font><br>紅葉を愛でながら人肌のぬる燗だった・・・</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133831" value="delete" id="delcheck21133831"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:36:02 No.21133831 <a class="del" href="javascript:void(0);" onclick="del(21133831);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476012962209.jpg" target="_blank">1476012962209.jpg</a>-(207000 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476012962209.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476012962209s.jpg" border="0" align="left" width="250" height="157" hspace="20" alt="207000 B"></a><blockquote style="margin-left:290px;">自演<br><br>まっかか</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133841" value="delete" id="delcheck21133841"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:40:11 No.21133841 <a class="del" href="javascript:void(0);" onclick="del(21133841);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476013211333.jpg" target="_blank">1476013211333.jpg</a>-(459283 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476013211333.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476013211333s.jpg" border="0" align="left" width="250" height="166" hspace="20" alt="459283 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133876" value="delete" id="delcheck21133876"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)20:56:03 No.21133876 <a class="del" href="javascript:void(0);" onclick="del(21133876);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476014163082.jpg" target="_blank">1476014163082.jpg</a>-(482990 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476014163082.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476014163082s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="482990 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133897" value="delete" id="delcheck21133897"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:04:19 No.21133897 <a class="del" href="javascript:void(0);" onclick="del(21133897);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476014659896.jpg" target="_blank">1476014659896.jpg</a>-(339547 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476014659896.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476014659896s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="339547 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133914" value="delete" id="delcheck21133914"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:10:19 No.21133914 <a class="del" href="javascript:void(0);" onclick="del(21133914);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476015019794.jpg" target="_blank">1476015019794.jpg</a>-(290260 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476015019794.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476015019794s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="290260 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133926" value="delete" id="delcheck21133926"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:13:52 No.21133926 <a class="del" href="javascript:void(0);" onclick="del(21133926);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476015232424.jpg" target="_blank">1476015232424.jpg</a>-(185173 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476015232424.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476015232424s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="185173 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133948" value="delete" id="delcheck21133948"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:16:56 No.21133948 <a class="del" href="javascript:void(0);" onclick="del(21133948);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476015416985.jpg" target="_blank">1476015416985.jpg</a>-(611965 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476015416985.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476015416985s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="611965 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133996" value="delete" id="delcheck21133996"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:28:08 No.21133996 <a class="del" href="javascript:void(0);" onclick="del(21133996);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016088843.jpg" target="_blank">1476016088843.jpg</a>-(698068 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016088843.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016088843s.jpg" border="0" align="left" width="250" height="213" hspace="20" alt="698068 B"></a><blockquote style="margin-left:290px;">支援</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133998" value="delete" id="delcheck21133998"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:28:21 No.21133998 <a class="del" href="javascript:void(0);" onclick="del(21133998);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016101592.jpg" target="_blank">1476016101592.jpg</a>-(99634 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016101592.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016101592s.jpg" border="0" align="left" width="250" height="250" hspace="20" alt="99634 B"></a><blockquote style="margin-left:290px;">支援</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21133999" value="delete" id="delcheck21133999"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:28:34 No.21133999 <a class="del" href="javascript:void(0);" onclick="del(21133999);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016114048.jpg" target="_blank">1476016114048.jpg</a>-(56607 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016114048.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016114048s.jpg" border="0" align="left" width="250" height="183" hspace="20" alt="56607 B"></a><blockquote style="margin-left:290px;">支援</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134006" value="delete" id="delcheck21134006"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:29:14 No.21134006 <a class="del" href="javascript:void(0);" onclick="del(21134006);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016154199.jpg" target="_blank">1476016154199.jpg</a>-(2033601 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016154199.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016154199s.jpg" border="0" align="left" width="251" height="143" hspace="20" alt="2033601 B"></a><blockquote style="margin-left:291px;">支援</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134011" value="delete" id="delcheck21134011"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:30:05 No.21134011 <a class="del" href="javascript:void(0);" onclick="del(21134011);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016205757.jpg" target="_blank">1476016205757.jpg</a>-(403476 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016205757.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016205757s.jpg" border="0" align="left" width="250" height="166" hspace="20" alt="403476 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134015" value="delete" id="delcheck21134015"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:30:41 No.21134015 <a class="del" href="javascript:void(0);" onclick="del(21134015);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016241536.jpg" target="_blank">1476016241536.jpg</a>-(734103 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016241536.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016241536s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="734103 B"></a><blockquote style="margin-left:290px;">自演<br><br>秋の猫が支援ありがとうございます<br>癒されました</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134025" value="delete" id="delcheck21134025"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:32:09 No.21134025 <a class="del" href="javascript:void(0);" onclick="del(21134025);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016329559.jpg" target="_blank">1476016329559.jpg</a>-(349066 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016329559.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016329559s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="349066 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134026" value="delete" id="delcheck21134026"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:32:22 No.21134026 <a class="del" href="javascript:void(0);" onclick="del(21134026);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016342158.jpg" target="_blank">1476016342158.jpg</a>-(662253 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016342158.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016342158s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="662253 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134032" value="delete" id="delcheck21134032"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:33:22 No.21134032 <a class="del" href="javascript:void(0);" onclick="del(21134032);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016402546.jpg" target="_blank">1476016402546.jpg</a>-(323043 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016402546.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016402546s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="323043 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134040" value="delete" id="delcheck21134040"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:34:54 No.21134040 <a class="del" href="javascript:void(0);" onclick="del(21134040);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016494418.jpg" target="_blank">1476016494418.jpg</a>-(185219 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016494418.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016494418s.jpg" border="0" align="left" width="250" height="171" hspace="20" alt="185219 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134055" value="delete" id="delcheck21134055"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:36:59 No.21134055 <a class="del" href="javascript:void(0);" onclick="del(21134055);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476016619106.jpg" target="_blank">1476016619106.jpg</a>-(485991 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476016619106.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476016619106s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="485991 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134116" value="delete" id="delcheck21134116"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:45:46 No.21134116 <a class="del" href="javascript:void(0);" onclick="del(21134116);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476017146800.jpg" target="_blank">1476017146800.jpg</a>-(290550 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476017146800.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476017146800s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="290550 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134139" value="delete" id="delcheck21134139"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:52:49 No.21134139 <a class="del" href="javascript:void(0);" onclick="del(21134139);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476017569798.jpg" target="_blank">1476017569798.jpg</a>-(328975 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476017569798.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476017569798s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="328975 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134148" value="delete" id="delcheck21134148"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:54:00 No.21134148 <a class="del" href="javascript:void(0);" onclick="del(21134148);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476017640542.jpg" target="_blank">1476017640542.jpg</a>-(436728 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476017640542.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476017640542s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="436728 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134159" value="delete" id="delcheck21134159"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)21:54:58 No.21134159 <a class="del" href="javascript:void(0);" onclick="del(21134159);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476017698168.jpg" target="_blank">1476017698168.jpg</a>-(1011300 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476017698168.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476017698168s.jpg" border="0" align="left" width="250" height="157" hspace="20" alt="1011300 B"></a><blockquote style="margin-left:290px;">ｷﾀ━━━(ﾟ∀ﾟ)━━━!!</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134220" value="delete" id="delcheck21134220"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)22:03:19 No.21134220 <a class="del" href="javascript:void(0);" onclick="del(21134220);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476018199360.jpg" target="_blank">1476018199360.jpg</a>-(178388 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476018199360.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476018199360s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="178388 B"></a><blockquote style="margin-left:290px;">やはり秋刀魚ですよねぇ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134264" value="delete" id="delcheck21134264"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)22:10:22 No.21134264 <a class="del" href="javascript:void(0);" onclick="del(21134264);return(false);">del</a>
+<blockquote><font color="#789922">&gt;南の島のルーシーを見てたんだが</font><br><br>虹なｗ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134397" value="delete" id="delcheck21134397"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)22:28:48 No.21134397 <a class="del" href="javascript:void(0);" onclick="del(21134397);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476019728181.jpg" target="_blank">1476019728181.jpg</a>-(111171 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476019728181.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476019728181s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="111171 B"></a><blockquote style="margin-left:291px;">秋ぽいけど保証がない</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134452" value="delete" id="delcheck21134452"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)22:37:23 No.21134452 <a class="del" href="javascript:void(0);" onclick="del(21134452);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476020243913.jpg" target="_blank">1476020243913.jpg</a>-(357131 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476020243913.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476020243913s.jpg" border="0" align="left" width="250" height="166" hspace="20" alt="357131 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134456" value="delete" id="delcheck21134456"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)22:38:28 No.21134456 <a class="del" href="javascript:void(0);" onclick="del(21134456);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476020308796.jpg" target="_blank">1476020308796.jpg</a>-(381652 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476020308796.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476020308796s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="381652 B"></a><blockquote style="margin-left:290px;">自演<br><br>支援色々ありがとうございました</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134467" value="delete" id="delcheck21134467"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)22:42:10 No.21134467 <a class="del" href="javascript:void(0);" onclick="del(21134467);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476020530674.jpg" target="_blank">1476020530674.jpg</a>-(155088 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476020530674.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476020530674s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="155088 B"></a><blockquote style="margin-left:290px;">自演<br>１００レス超えもしたので今日は此の辺で閉店しますね<br>明日は残りの秋壁紙を自演した後、10月なので<br>ついでにハロウィン系の壁紙特集もしようと思います<br><br>それで参加してくれた方達にお訊きしますが<br>ハロウィン系もこのスレでやった方が良いと思いますか？<br>それとも別スレでハロウィン系やった方が良いでしょうか？<br>もし希望があればレスお願いします<br>特になければその時にこちらで判断しようと思います</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134473" value="delete" id="delcheck21134473"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)22:43:35 No.21134473 <a class="del" href="javascript:void(0);" onclick="del(21134473);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476020615660.jpg" target="_blank">1476020615660.jpg</a>-(382450 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476020615660.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476020615660s.jpg" border="0" align="left" width="251" height="166" hspace="20" alt="382450 B"></a><blockquote style="margin-left:291px;">支援やレスありがとうございました<br>それではまた明日にご来店お待ちしていますね<br>おやすみなさいノシ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134505" value="delete" id="delcheck21134505"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)22:54:03 No.21134505 <a class="del" href="javascript:void(0);" onclick="del(21134505);return(false);">del</a>
+<blockquote><font color="#789922">&gt;21133365</font><br>これって、畝傍山ですよね？<br>すごく懐かしいです。<br>どの辺りで撮られたのでしょうか？</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134526" value="delete" id="delcheck21134526"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/09(日)23:02:14 No.21134526 <a class="del" href="javascript:void(0);" onclick="del(21134526);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476021734051.jpg" target="_blank">1476021734051.jpg</a>-(370243 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476021734051.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476021734051s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="370243 B"></a><blockquote style="margin-left:291px;">壁紙屋さん　乙でした<br>ハロウィン用も楽しみにしときます</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21134906" value="delete" id="delcheck21134906"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)01:38:40 No.21134906 <a class="del" href="javascript:void(0);" onclick="del(21134906);return(false);">del</a>
+<blockquote><font color="#789922">&gt;どの辺りで撮られたのでしょうか？</font><br><br>天香久山の近くだね</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135242" value="delete" id="delcheck21135242"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:11:11 No.21135242 <a class="del" href="javascript:void(0);" onclick="del(21135242);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476061871976.jpg" target="_blank">1476061871976.jpg</a>-(705386 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476061871976.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476061871976s.jpg" border="0" align="left" width="251" height="167" hspace="20" alt="705386 B"></a><blockquote style="margin-left:291px;">おはようございます(∩_∩)ゞ<br><br><font color="#789922">&gt;これって、畝傍山ですよね？</font><br><font color="#789922">&gt;すごく懐かしいです。</font><br><font color="#789922">&gt;どの辺りで撮られたのでしょうか？</font><br><br>某風景画像交換掲示板で拾ったものですが奈良の畝傍山で間違いないです<br>場所の詳細は不明ですが、けっこう有名な撮影スポットとコメントされてました<br>日によっては撮影に来ている人が多くいるとの事です<br>No.21134906さんの情報を参考にグーグルマップで探してみてはどうでしょうか？</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135246" value="delete" id="delcheck21135246"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:15:59 No.21135246 <a class="del" href="javascript:void(0);" onclick="del(21135246);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476062159001.jpg" target="_blank">1476062159001.jpg</a>-(456811 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476062159001.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476062159001s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="456811 B"></a><blockquote style="margin-left:290px;">自演再開ノ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135250" value="delete" id="delcheck21135250"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:20:10 No.21135250 <a class="del" href="javascript:void(0);" onclick="del(21135250);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476062410588.jpg" target="_blank">1476062410588.jpg</a>-(505358 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476062410588.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476062410588s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="505358 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135251" value="delete" id="delcheck21135251"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:20:44 No.21135251 <a class="del" href="javascript:void(0);" onclick="del(21135251);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476062444634.jpg" target="_blank">1476062444634.jpg</a>-(500467 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476062444634.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476062444634s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="500467 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135252" value="delete" id="delcheck21135252"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:23:47 No.21135252 <a class="del" href="javascript:void(0);" onclick="del(21135252);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476062627126.jpg" target="_blank">1476062627126.jpg</a>-(420500 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476062627126.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476062627126s.jpg" border="0" align="left" width="250" height="157" hspace="20" alt="420500 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135261" value="delete" id="delcheck21135261"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:34:54 No.21135261 <a class="del" href="javascript:void(0);" onclick="del(21135261);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476063294815.jpg" target="_blank">1476063294815.jpg</a>-(141122 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476063294815.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476063294815s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="141122 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135262" value="delete" id="delcheck21135262"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:35:28 No.21135262 <a class="del" href="javascript:void(0);" onclick="del(21135262);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476063328703.jpg" target="_blank">1476063328703.jpg</a>-(273997 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476063328703.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476063328703s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="273997 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135263" value="delete" id="delcheck21135263"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:36:08 No.21135263 <a class="del" href="javascript:void(0);" onclick="del(21135263);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476063368610.jpg" target="_blank">1476063368610.jpg</a>-(829777 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476063368610.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476063368610s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="829777 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135265" value="delete" id="delcheck21135265"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:36:58 No.21135265 <a class="del" href="javascript:void(0);" onclick="del(21135265);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476063418547.jpg" target="_blank">1476063418547.jpg</a>-(405450 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476063418547.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476063418547s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="405450 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135268" value="delete" id="delcheck21135268"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:40:43 No.21135268 <a class="del" href="javascript:void(0);" onclick="del(21135268);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476063643891.jpg" target="_blank">1476063643891.jpg</a>-(498043 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476063643891.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476063643891s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="498043 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135269" value="delete" id="delcheck21135269"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:41:23 No.21135269 <a class="del" href="javascript:void(0);" onclick="del(21135269);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476063683232.jpg" target="_blank">1476063683232.jpg</a>-(217583 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476063683232.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476063683232s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="217583 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135271" value="delete" id="delcheck21135271"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:41:45 No.21135271 <a class="del" href="javascript:void(0);" onclick="del(21135271);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476063705097.jpg" target="_blank">1476063705097.jpg</a>-(786947 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476063705097.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476063705097s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="786947 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135274" value="delete" id="delcheck21135274"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:42:17 No.21135274 <a class="del" href="javascript:void(0);" onclick="del(21135274);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476063737321.jpg" target="_blank">1476063737321.jpg</a>-(220229 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476063737321.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476063737321s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="220229 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135275" value="delete" id="delcheck21135275"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:42:44 No.21135275 <a class="del" href="javascript:void(0);" onclick="del(21135275);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476063764221.jpg" target="_blank">1476063764221.jpg</a>-(499324 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476063764221.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476063764221s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="499324 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135283" value="delete" id="delcheck21135283"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:47:21 No.21135283 <a class="del" href="javascript:void(0);" onclick="del(21135283);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064041037.jpg" target="_blank">1476064041037.jpg</a>-(417865 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064041037.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064041037s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="417865 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135284" value="delete" id="delcheck21135284"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:47:55 No.21135284 <a class="del" href="javascript:void(0);" onclick="del(21135284);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064075307.jpg" target="_blank">1476064075307.jpg</a>-(442329 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064075307.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064075307s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="442329 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135285" value="delete" id="delcheck21135285"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:48:15 No.21135285 <a class="del" href="javascript:void(0);" onclick="del(21135285);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064095651.jpg" target="_blank">1476064095651.jpg</a>-(143342 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064095651.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064095651s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="143342 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135288" value="delete" id="delcheck21135288"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:49:00 No.21135288 <a class="del" href="javascript:void(0);" onclick="del(21135288);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064140572.jpg" target="_blank">1476064140572.jpg</a>-(179265 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064140572.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064140572s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="179265 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135289" value="delete" id="delcheck21135289"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:49:24 No.21135289 <a class="del" href="javascript:void(0);" onclick="del(21135289);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064164153.jpg" target="_blank">1476064164153.jpg</a>-(114199 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064164153.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064164153s.jpg" border="0" align="left" width="251" height="141" hspace="20" alt="114199 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135295" value="delete" id="delcheck21135295"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:51:37 No.21135295 <a class="del" href="javascript:void(0);" onclick="del(21135295);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064297867.jpg" target="_blank">1476064297867.jpg</a>-(504010 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064297867.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064297867s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="504010 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135296" value="delete" id="delcheck21135296"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:52:11 No.21135296 <a class="del" href="javascript:void(0);" onclick="del(21135296);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064331503.jpg" target="_blank">1476064331503.jpg</a>-(322123 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064331503.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064331503s.jpg" border="0" align="left" width="251" height="167" hspace="20" alt="322123 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135298" value="delete" id="delcheck21135298"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:53:55 No.21135298 <a class="del" href="javascript:void(0);" onclick="del(21135298);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064435119.jpg" target="_blank">1476064435119.jpg</a>-(199368 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064435119.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064435119s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="199368 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135301" value="delete" id="delcheck21135301"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:55:56 No.21135301 <a class="del" href="javascript:void(0);" onclick="del(21135301);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064556275.jpg" target="_blank">1476064556275.jpg</a>-(460000 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064556275.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064556275s.jpg" border="0" align="left" width="251" height="166" hspace="20" alt="460000 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135302" value="delete" id="delcheck21135302"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:56:27 No.21135302 <a class="del" href="javascript:void(0);" onclick="del(21135302);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064587987.jpg" target="_blank">1476064587987.jpg</a>-(361755 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064587987.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064587987s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="361755 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135304" value="delete" id="delcheck21135304"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:58:44 No.21135304 <a class="del" href="javascript:void(0);" onclick="del(21135304);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064724185.jpg" target="_blank">1476064724185.jpg</a>-(480674 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064724185.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064724185s.jpg" border="0" align="left" width="250" height="157" hspace="20" alt="480674 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135305" value="delete" id="delcheck21135305"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)10:59:18 No.21135305 <a class="del" href="javascript:void(0);" onclick="del(21135305);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476064758096.jpg" target="_blank">1476064758096.jpg</a>-(315963 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476064758096.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476064758096s.jpg" border="0" align="left" width="250" height="164" hspace="20" alt="315963 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135324" value="delete" id="delcheck21135324"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)11:05:44 No.21135324 <a class="del" href="javascript:void(0);" onclick="del(21135324);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476065144361.jpg" target="_blank">1476065144361.jpg</a>-(265221 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476065144361.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476065144361s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="265221 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135325" value="delete" id="delcheck21135325"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)11:06:11 No.21135325 <a class="del" href="javascript:void(0);" onclick="del(21135325);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476065171438.jpg" target="_blank">1476065171438.jpg</a>-(350531 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476065171438.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476065171438s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="350531 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135331" value="delete" id="delcheck21135331"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)11:08:44 No.21135331 <a class="del" href="javascript:void(0);" onclick="del(21135331);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476065324206.jpg" target="_blank">1476065324206.jpg</a>-(128475 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476065324206.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476065324206s.jpg" border="0" align="left" width="250" height="168" hspace="20" alt="128475 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135333" value="delete" id="delcheck21135333"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)11:09:30 No.21135333 <a class="del" href="javascript:void(0);" onclick="del(21135333);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476065370778.jpg" target="_blank">1476065370778.jpg</a>-(396963 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476065370778.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476065370778s.jpg" border="0" align="left" width="251" height="157" hspace="20" alt="396963 B"></a><blockquote style="margin-left:291px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135351" value="delete" id="delcheck21135351"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)11:14:54 No.21135351 <a class="del" href="javascript:void(0);" onclick="del(21135351);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476065694895.jpg" target="_blank">1476065694895.jpg</a>-(140211 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476065694895.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476065694895s.jpg" border="0" align="left" width="250" height="167" hspace="20" alt="140211 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135353" value="delete" id="delcheck21135353"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)11:16:10 No.21135353 <a class="del" href="javascript:void(0);" onclick="del(21135353);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476065770948.jpg" target="_blank">1476065770948.jpg</a>-(366878 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476065770948.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476065770948s.jpg" border="0" align="left" width="250" height="179" hspace="20" alt="366878 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135366" value="delete" id="delcheck21135366"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)11:21:56 No.21135366 <a class="del" href="javascript:void(0);" onclick="del(21135366);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476066116124.jpg" target="_blank">1476066116124.jpg</a>-(398868 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476066116124.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476066116124s.jpg" border="0" align="left" width="250" height="188" hspace="20" alt="398868 B"></a><blockquote style="margin-left:290px;">自演</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135370" value="delete" id="delcheck21135370"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)11:26:07 No.21135370 <a class="del" href="javascript:void(0);" onclick="del(21135370);return(false);">del</a>
+<br> &nbsp; &nbsp; <a href="http://jun.2chan.net/b/src/1476066367040.jpg" target="_blank">1476066367040.jpg</a>-(491022 B) <small>サムネ表示</small><br><a href="http://jun.2chan.net/b/src/1476066367040.jpg" target="_blank"><img src="http://jun.2chan.net/b/thumb/1476066367040s.jpg" border="0" align="left" width="250" height="141" hspace="20" alt="491022 B"></a><blockquote style="margin-left:290px;">自演ここまで<br><br>それでは出掛けてきます<br>夜に少しですがハロウィン系の壁紙もご用意しますねノシ</blockquote></td></tr></tbody></table>
+<table border="0"><tbody><tr><td class="rts">…</td><td class="rtd">
+<input type="checkbox" name="21135589" value="delete" id="delcheck21135589"><font color="#cc1105"><b>無念</b></font> 
+Name <font color="#117743"><b>としあき </b></font> 16/10/10(月)14:26:57 No.21135589 <a class="del" href="javascript:void(0);" onclick="del(21135589);return(false);">del</a>
+<blockquote>畝傍山の写真良いですね<br>近くに住んでいます<br>これからの季節、朝夕の葛城金剛～二上山もきれいになりますね</blockquote></td></tr></tbody></table>
+<div style="clear:left"></div>
+</div><!--スレッド終了-->
+<script type="text/javascript"><!--
+document.write('<span id="contres">[<a href="res/21133354.htm" onClick="scrlf(21133354);return false;">リロード<\/a>]<span id="contdisp">15日06:07頃消えます<\/span><br><\/span>');
+//--></script><span id="contres">[<a href="res/21133354.htm" onclick="scrlf(21133354);return false;">リロード</a>]<span id="contdisp">15日06:07頃消えます</span><br></span><div id="rightad"><div id="rightadfloat" class="rad radfix"><iframe width="160" height="600" src="http://free2.jp/2chan_4/" frameborder="0" allowfullscreen=""></iframe></div></div><hr>
+<!--spfoot_a--><div style="width:728px;height:90px;margin:2px auto;"><iframe width="728" height="90" src="http://free2.jp/2chan_2/" frameborder="0" allowfullscreen="" scrolling="no"></iframe></div>
+<div class="delform">
+<input type="hidden" name="mode" value="usrdel">【記事削除】[<input type="checkbox" name="onlyimgdel" value="on">画像だけ消す]<br>
+削除キー<input type="password" name="pwd" size="8" maxlength="12" value="">
+<input type="submit" value="削除"></div></form><iframe width="1" height="1" style="position:absolute; top:-9999px; left: -9999px; border-style: none" src="http://cache.send.microadinc.com/js/cookie_loader.html"></iframe><iframe width="1" height="1" style="position:absolute; top:-9999px; left: -9999px; border-style: none" src="http://cache.send.microadinc.com/js/cookie_enabled_get_apac.html"></iframe>
+<script type="text/javascript"><!--
+l();
+//--></script><div id="ufm"></div>
+<div align="center"><!--1-->
+<!--foot1_a-->
+<script type="text/javascript">
+var adstir_vars = {
+  ver: "4.0",
+  app_id: "MEDIA-2180a85c",
+  ad_spot: 10,
+  center: false,
+};
+</script>
+<script type="text/javascript" src="https://js.ad-stir.com/js/adstir.js"></script><script src="http://ad.ad-stir.com/ad?app_id=MEDIA-2180a85c&amp;ad_spot_no=10&amp;locale=en&amp;ut=1476085857348&amp;topframe=1&amp;origin=http%3A%2F%2Fjun.2chan.net%2Fb%2Fres%2F21133354.htm&amp;sw=1366&amp;sh=768&amp;dpr=1&amp;callback=AdstirCB7193317706A5427153656"></script>
+
+<!--2-->
+<!--div style="width:728px;height:90px;margin:2px"><iframe frameborder="0" width="728" height="90" src="http://free2.jp/2chan_2/footer2_0_728.htm"></iframe></div-->
+<!--3-->
+<!--foot3_n-->
+<div style="width:728px;height:90px;margin:2px auto;" id="foot3">
+<script type="text/javascript">
+var lists=[
+"<iframe id='2chanfooter' name='2chanfooter' src='http://cas.criteo.com/delivery/afr.php?zoneid=482860' framespacing='0' frameborder='no' scrolling='no' width='728' height='90'></iframe>"
+];
+var rNo = Math.floor(Math.random() * lists.length);
+document.write(lists[rNo]);
+</script><iframe id="2chanfooter" name="2chanfooter" src="http://cas.criteo.com/delivery/afr.php?zoneid=482860" framespacing="0" frameborder="no" scrolling="no" width="728" height="90"></iframe>
+</div>
+<!--4-->
+<div style="width:680px;margin: 0 auto;">
+<!--foot4a_left-->
+<div style="width:336px;height:280px;margin:2px;float:left;" id="foot4a_left">
+<!--[if gte IE 7]--><script type="text/javascript">
+var lists=[
+'<iframe frameborder="0" width="336" height="280" src="http://free2.jp/footer1.htm"></iframe>'
+];
+var rNo = Math.floor(Math.random() * lists.length);
+document.write(lists[rNo]);
+</script><iframe frameborder="0" width="336" height="280" src="http://free2.jp/footer1.htm"></iframe><!--[endif]-->
+</div>
+<!--foot4_ab-->
+<div style="width:336px;height:280px;margin:2px;float:left;" id="foot4abdef_right">
+<script type="text/javascript">
+var lists=[
+"<iframe id='2chanrectangle' name='2chanrectangle' src='http://cas.criteo.com/delivery/afr.php?zoneid=485154' framespacing='0' frameborder='no' scrolling='no' width='300' height='250'></iframe>"
+];
+var rNo = Math.floor(Math.random() * lists.length);
+document.write(lists[rNo]);
+</script><iframe id="2chanrectangle" name="2chanrectangle" src="http://cas.criteo.com/delivery/afr.php?zoneid=485154" framespacing="0" frameborder="no" scrolling="no" width="300" height="250"></iframe>
+</div>
+<div style="clear:both;"></div>
+</div>
+
+<small><!-- GazouBBS v3.0 --><!-- ふたば改0.8 -->
+- <a href="http://php.s3.to" target="_top">GazouBBS</a> + <a href="http://www.2chan.net/" target="_top">futaba</a>-
+</small></div><script type="text/javascript"><!--
+scrll();setTimeout(function(){reszk();},1000);setTimeout(function(){reszk();},50);//--></script></body></html>

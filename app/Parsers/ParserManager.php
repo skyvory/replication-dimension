@@ -2,7 +2,7 @@
 
 namespace App\Parsers;
 use App\Parsers\DeviantartParser;
-// use x-parser
+use App\Parsers\NichanParser;
 // use x-parser
 // use x-parser
 
@@ -11,6 +11,7 @@ trait ParserManager
 	public function getParserBridge() {
 		return [
 			'deviantart.com' => 'deviantart',
+			'2chan.net' => '2chan',
 		];
 	}
 
@@ -20,6 +21,10 @@ trait ParserManager
 		switch (strtolower($site_name)) {
 			case "deviantart":
 				$analyze = new DeviantartParser();
+				$image_list = $analyze->parseImage($html_content);
+				break;
+			case "2chan":
+				$analyze = new NichanParser();
 				$image_list = $analyze->parseImage($html_content);
 				break;
 			default:

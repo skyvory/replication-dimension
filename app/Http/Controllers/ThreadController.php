@@ -40,7 +40,7 @@ class ThreadController extends Controller
 
 		// avoid creating duplicate state
 		if($this->isDuplicateThread($url)) {
-			// throw new ConflictHttpException('Unable to create duplicate state!');
+			// throw new ConflictHttpException('Unable to create duplicate state!'); >>>to uncommment
 		}
 
 		// retrieve record about the site
@@ -48,10 +48,12 @@ class ThreadController extends Controller
 		$site_id = $site['id'];
 		$site_name = $site['name'];
 
-
-		// $mock_html_content = file_get_contents(public_path() . '\dev.html');
-		$html_content = $this->getHtmlContent($url);
+		$html_content = file_get_contents(public_path() . '\example_2ch.htm');
+		// $html_content = $this->getHtmlContent($url);
 		$thread_name = $this->getSiteTitle($html_content);
+
+		$images = $this->parseThreadContent($site_name, $html_content);
+		return $images;
 
 		\DB::beginTransaction();
 
@@ -219,6 +221,7 @@ class ThreadController extends Controller
 	protected function getSiteMatch($url) {
 		$domain = $this->excerptDomain($url);
 		$site = Site::where('domain', $domain)->first();
+		// >>> to throw error if no site found
 		return $site;
 	}
 
