@@ -48,12 +48,10 @@ class ThreadController extends Controller
 		$site_id = $site['id'];
 		$site_name = $site['name'];
 
-		$html_content = file_get_contents(public_path() . '\example_2ch.htm');
-		// $html_content = $this->getHtmlContent($url);
+		// $html_content = file_get_contents(public_path() . '\futaba2.htm');
+		// $html_content = file_get_contents(public_path() . '\example_2ch.htm');
+		$html_content = $this->getHtmlContent($url);
 		$thread_name = $this->getSiteTitle($html_content);
-
-		$images = $this->parseThreadContent($site_name, $html_content);
-		return $images;
 
 		\DB::beginTransaction();
 

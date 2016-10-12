@@ -30,9 +30,7 @@ class NichanParser
 		$dom = new \DOMDocument;
 		libxml_use_internal_errors(true);
 		$dom->loadHTML($html_content);
-		// >>> work in progress
 		foreach($dom->getElementsByTagName('a') as $node) {
-			echo $node->getAttribute('href') . "<br>";
 			if(preg_match("#https?:\/\/\S+\.2chan.net\/\S+\/src\/\S+\.(jpg|png|gif|webp|jpeg|bmp)#", $node->getAttribute('href'))) {
 				if(!in_array($node->getAttribute('href'), $image_list)) {
 					$image_list[] = $node->getAttribute('href');
