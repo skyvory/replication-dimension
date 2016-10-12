@@ -93,8 +93,22 @@ class ImageController extends Controller
 				rename($file_path, $new_file_path);
 
 				$image = Image::where('thread_id', $thread_id)->where('url', $url)->where('download_status', 1)->first();
-				$image->download_status = 3;
-				$image->save();
+				// create new record for modified/false image in case it doesn't exist on database. New image metadata will be created after save success, not here
+				if($image == null || $image->count() != 1) {
+					$image = new Image();
+					$image->thread_id = $thread_id;
+					$image->name = $path_parts['filename'] . '_' . $existing_image_date . '.' . $path_parts['extension'];
+					$image->url = $url;
+					$image->size = filesize($filepath);
+					$image->download_status = 3;
+					$image->save();
+				}
+				else {
+					$image->name = $path_parts['filename'] . '_' . $existing_image_date . '.' . $path_parts['extension'];
+					$image->download_status = 3;
+					$image->save();
+				}
+				$this->materializeThumbnail($file_path,  'thumbnails/' . $thread_id . '/~thumb_' . $path_parts['filename'] . '_' . $existing_image_date . '.' . $path_parts['extension']);
 			}
 		}
 
