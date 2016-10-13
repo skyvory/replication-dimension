@@ -45,4 +45,10 @@ $api->version('v1', [], function($api) {
 		$api->delete('/{id}/block', 'App\Http\Controllers\ImageController@block');
 		$api->delete('/{id}/exclude', 'App\Http\Controllers\ImageController@exclude');
 	});
+
+	$api->group(['prefix' => 'suffix'], function($api) {
+		$api->get('/', 'App\Http\Controllers\SuffixController@getSuffixes');
+		$api->post('/', 'App\Http\Controllers\SuffixController@create');
+		$api->delete('/{id}', 'App\Http\Controllers\SuffixController@delete');
+	});
 });
