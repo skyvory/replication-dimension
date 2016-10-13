@@ -112,6 +112,13 @@ class ImageController extends Controller
 			}
 		}
 
+		// currently commented out as it's questionable whether block checking should be done here, where the function is only to load image per se
+		// check if status of url image of the thread is blocked
+		// $image_blocked = Image::where('thread_id', $thread_id)->where('url', $url)->whereIn('download_status', array(2))->get();
+		// if($image_blocked != null || $image_blocked->count() > 0) {
+		// 	throw new \Symfony\Component\HttpKernel\Exception\HttpException('status of ' . $url . ' is on blocked category');
+		// }
+
 		$save_success = false;
 		for ($iteration=0; $iteration < 3; $iteration++) { 
 			$written_byte = $this->saveImage($url, $file_path);
