@@ -16,6 +16,7 @@ $agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firef
 $ch = curl_init( $url );
 curl_setopt($ch, CURLOPT_HEADER, 1);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_ENCODING ,"");
 curl_setopt($ch, CURLOPT_USERAGENT, $agent);
 
 $raw = curl_exec($ch);
