@@ -41,7 +41,7 @@ class ImageController extends Controller
 		$this->prepareDirectory($thread->download_directory);
 
 		# get image size
-		$headers = get_headers($url);
+		$headers = $this->retrieveHeaders($url);
 		$content_length = -1;
 		foreach($headers as $head) {
 			preg_match('/Content-Length: (\d+)/', $head, $match);
@@ -85,9 +85,10 @@ class ImageController extends Controller
 			}
 			# case where the source image has been modified somehow (size, resolution, or entirely different image with same name and url)
 			else {
+				// get filesize before rename. do this before rename so filesize is known even after rename
+				$existing_old_image_filesize = filesize($file_path) || 0;
 				# rename old file (before redownload the new one)
-				$exif = exif_read_data($file_path);
-				$existing_image_date = date('YmdHis', $exif['FileDateTime']);
+				$existing_image_date = date('YmdHis', filemtime($file_path));
 				$path_parts = pathinfo($file_path);
 				$new_file_path = $path_parts['dirname'] . '\\' . $path_parts['filename'] . '_' . $existing_image_date . '.' . $path_parts['extension'];
 				rename($file_path, $new_file_path);
@@ -99,7 +100,7 @@ class ImageController extends Controller
 					$image->thread_id = $thread_id;
 					$image->name = $path_parts['filename'] . '_' . $existing_image_date . '.' . $path_parts['extension'];
 					$image->url = $url;
-					$image->size = filesize($filepath);
+					$image->size = $existing_old_image_filesize;
 					$image->download_status = 3;
 					$image->save();
 				}
@@ -121,12 +122,14 @@ class ImageController extends Controller
 
 		$save_success = false;
 		for ($iteration=0; $iteration < 3; $iteration++) { 
-			$written_byte = $this->saveImage($url, $file_path);
+			$written_byte = $this->saveImageWithProxy($url, $file_path);
 			if($source_image_size == filesize($file_path) && $source_image_size == $written_byte) {
 				$save_success = true;
 				break;
 			}
 		}
+		// var_dump($written_byte);
+		// return;
 
 		if(!$save_success) {
 			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Fail to save image after ' . $iteration . ' attempts.');
@@ -230,6 +233,58 @@ class ImageController extends Controller
 		return $written_byte;
 	}
 
+	protected function saveImageWithProxy($url, $file_path)
+	{
+		$responder = 'https://quantum.000webhostapp.com/relay/visual/index.php';
+
+		// prepare POST string
+		$fields = array(
+			'url' => $url
+			);
+		$postvars = '';
+		$sep = ' ';
+		foreach ($fields as $key => $value) {
+			$postvars .= $sep.urlencode($key).'='.urlencode($value);
+			$sep = '&';
+		}
+
+		try{
+			$agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0';
+			$ch = curl_init();
+			if(false == $ch) {
+				throw new \Exception('failed to initialize');
+			}
+			curl_setopt($ch, CURLOPT_URL, $responder);
+			curl_setopt($ch, CURLOPT_HEADER, 0);
+			curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+			curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+			curl_setopt($ch,CURLOPT_POST,1);
+			curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+			$raw = curl_exec($ch);
+			// return $raw;
+			if($raw == false) {
+				throw new \Exception(curl_error($ch), curl_errno($ch));
+			}
+			curl_close ($ch);
+
+			// $img = json_decode(trim($raw), TRUE);
+
+			$fp = fopen($file_path, 'w');
+			$written_byte = fwrite($fp, $raw);
+			fclose($fp);
+		}
+		catch(\Exception $e) {
+			trigger_error(sprintf(
+				'curl failed with error #%d: %s',
+				$e->getCode(), $e->getMessage()),
+			E_USER_ERROR);
+		}
+
+		return $written_byte;
+	}
+
 	private function deleteDir($dirPath) {
 		if (! is_dir($dirPath)) {
 			throw new InvalidArgumentException("$dirPath must be a directory");
@@ -247,5 +302,39 @@ class ImageController extends Controller
 			}
 		}
 		rmdir($dirPath);
+	}
+
+	protected function retrieveHeaders($url) {
+		$use_proxy = true;
+
+		if($use_proxy) {
+			$responder = 'https://quantum.000webhostapp.com/relay/header/index.php';
+
+			$fields = array(
+				'url' => $url
+				);
+			$postvars = '';
+			$sep = ' ';
+			foreach ($fields as $key => $value) {
+				$postvars .= $sep.urlencode($key).'='.urlencode($value);
+				$sep = '&';
+			}
+
+			$ch = curl_init();
+			$agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0';
+			curl_setopt($ch, CURLOPT_URL, $responder);
+			curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+			curl_setopt($ch,CURLOPT_POST,1);
+			curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+			$result = curl_exec($ch);
+			curl_close($ch);
+			$result = json_decode(trim($result), TRUE);
+			return $result;
+		}
+		else {
+			return get_headers($url);
+		}
 	}
 }

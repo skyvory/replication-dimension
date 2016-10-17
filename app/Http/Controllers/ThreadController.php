@@ -204,16 +204,47 @@ class ThreadController extends Controller
 	}
 
 	protected function getHtmlContent($url) {
-		$agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0';
-		// $agent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)';
-		$content = curl_init();
-		curl_setopt($content, CURLOPT_URL, $url);
-		curl_setopt($content, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($content, CURLOPT_USERAGENT, $agent);
-		$result = curl_exec($content);
-		curl_close($content);
+		$use_proxy = true;
 
-		return $result;
+		if($use_proxy) {
+			$responder = 'https://quantum.000webhostapp.com/relay/thread/index.php';
+
+			$fields = array(
+				'url' => $url
+				);
+			$postvars = '';
+			$sep = ' ';
+			foreach ($fields as $key => $value) {
+				$postvars .= $sep.urlencode($key).'='.urlencode($value);
+				$sep = '&';
+			}
+
+			$ch = curl_init();
+			$agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0';
+
+			curl_setopt($ch, CURLOPT_URL, $responder);
+			curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+			curl_setopt($ch, CURLOPT_POST,1);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+			$result = curl_exec($ch);
+			curl_close($ch);
+
+			return $result;
+		}
+		else {
+			$agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0';
+			// $agent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 1.0.3705; .NET CLR 1.1.4322)';
+			$content = curl_init();
+			curl_setopt($content, CURLOPT_URL, $url);
+			curl_setopt($content, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($content, CURLOPT_USERAGENT, $agent);
+			$result = curl_exec($content);
+			curl_close($content);
+
+			return $result;
+		}
 	}
 
 	protected function getSiteMatch($url) {
