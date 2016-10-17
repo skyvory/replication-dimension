@@ -20,11 +20,20 @@ curl_setopt($ch, CURLOPT_ENCODING ,"");
 curl_setopt($ch, CURLOPT_USERAGENT, $agent);
 
 $raw = curl_exec($ch);
-curl_close( $ch );
 if($raw == false) {
 	throw new Exception(curl_error($ch), curl_errno($ch));
 }
 
-print $raw;
+$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+$header = substr($raw, 0, $header_size);
+$body = substr($raw, $header_size);
+curl_close( $ch );
+
+if($http_code == 404) {
+	header("HTTP/1.1 404 Not Found");
+	// http_response_code(404);
+}
+print $body;
 
 ?>
