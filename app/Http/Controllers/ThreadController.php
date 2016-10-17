@@ -87,7 +87,6 @@ class ThreadController extends Controller
 				)
 			);
 
-
 		return $this->response->array($compact);
 
 	}
@@ -199,8 +198,16 @@ class ThreadController extends Controller
 
 	protected function getSiteTitle($html) {
 		$str = trim(preg_replace('/\s+/', ' ', $html)); // supports line breaks inside <title>
-		preg_match("/\<title\>(.*)\<\/title\>/i", $str, $title); // ignore case
-		return $title[1];
+		preg_match("/\<title\>(.*)\<\/title\>/i", $str, $match); // ignore case
+
+		$title = $match[1];
+
+		$title_encoding = mb_detect_encoding($match[1]);
+		if($title_encoding == false || $title_encoding != 'ASCII' || $title_encoding != 'UTF-8') {
+			$title = mb_convert_encoding($title, "UTF-8", "SJIS");
+		}
+
+		return $title;
 	}
 
 	protected function getHtmlContent($url) {
