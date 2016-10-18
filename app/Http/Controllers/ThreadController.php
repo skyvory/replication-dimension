@@ -50,7 +50,14 @@ class ThreadController extends Controller
 
 		// $html_content = file_get_contents(public_path() . '\futaba2.htm');
 		// $html_content = file_get_contents(public_path() . '\example_2ch.htm');
-		$html_content = $this->getHtmlContent($url);
+		$page = $this->getHtmlContent($url);
+		$http_code = $page['http_code'];
+		$html_content = $page['content'];
+
+		if($http_code == 404) {
+			throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('Thread is closed.');
+		}
+
 		$thread_name = $this->getSiteTitle($html_content);
 
 		\DB::beginTransaction();
@@ -125,7 +132,16 @@ class ThreadController extends Controller
 				throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('Thread is already marked as closed');
 			}
 
-			$html_content = $this->getHtmlContent($thread->url);
+			$page = $this->getHtmlContent($thread->url);
+			$http_code = $page['http_code'];
+			$html_content = $page['content'];
+
+			if($http_code == 404) {
+				$thread->status = 3;
+				$thread->save();
+				throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('Thread is closed.');
+			}
+
 			$site_name = $this->getSiteMatch($thread->url)['name'];
 			$images = $this->parseThreadContent($site_name, $html_content);
 
@@ -157,8 +173,18 @@ class ThreadController extends Controller
 		}
 
 		$thread = Thread::find($id);
+
+		$page = $this->getHtmlContent($thread->url);
+		$http_code = $page['http_code'];
+		$html_content = $page['content'];
+
+		if($http_code == 404) {
+			$thread->status = 3;
+			$thread->save();
+			throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('Thread is closed.');
+		}
+
 		$site_name = $this->getSiteMatch($thread->url)['name'];
-		$html_content = $this->getHtmlContent($thread->url);
 		$images = $this->parseThreadContent($site_name, $html_content);
 
 		$new_images_stack = array();
@@ -231,14 +257,17 @@ class ThreadController extends Controller
 
 			curl_setopt($ch, CURLOPT_URL, $responder);
 			curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+			curl_setopt($ch, CURLOPT_HEADER, 1);
 			curl_setopt($ch, CURLOPT_POST,1);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, $postvars);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
 			$result = curl_exec($ch);
+
+			$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 			curl_close($ch);
 
-			return $result;
+			return array('http_code' => $http_code, 'content' => $result);
 		}
 		else {
 			$agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0';
