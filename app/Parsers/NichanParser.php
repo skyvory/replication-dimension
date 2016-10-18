@@ -27,14 +27,23 @@ class NichanParser
 
 		$image_list = array();
 
-		$dom = new \DOMDocument;
-		libxml_use_internal_errors(true);
-		$dom->loadHTML($html_content);
-		foreach($dom->getElementsByTagName('a') as $node) {
-			if(preg_match("#https?:\/\/\S+\.2chan.net\/\S+\/src\/\S+\.(jpg|png|gif|webp|jpeg|bmp)#", $node->getAttribute('href'))) {
-				if(!in_array($node->getAttribute('href'), $image_list)) {
-					$image_list[] = $node->getAttribute('href');
-				}
+		// $dom = new \DOMDocument;
+		// libxml_use_internal_errors(true);
+		// $dom->loadHTML($html_content);
+		// foreach($dom->getElementsByTagName('a') as $node) {
+		// 	if(preg_match("#https?:\/\/\S+\.2chan.net\/\S+\/src\/\S+\.(jpg|png|gif|webp|jpeg|bmp)#", $node->getAttribute('href'))) {
+		// 		if(!in_array($node->getAttribute('href'), $image_list)) {
+		// 			$image_list[] = $node->getAttribute('href');
+		// 		}
+		// 	}
+		// }
+
+		// regex, because ffff domdocument which cut the html content for no reason
+		preg_match_all("#https?:\/\/\S+\.2chan.net\/\S+\/src\/\S+\.(jpg|png|gif|webp|jpeg|bmp)#", $html_content, $match);
+		// var_dump($match);
+		foreach ($match[0] as $key => $value) {
+			if(!in_array($value, $image_list)) {
+				$image_list[] = $value;
 			}
 		}
 
