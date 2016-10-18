@@ -22,6 +22,9 @@ class ImageController extends Controller
 
 	public function load(Request $request)
 	{
+		set_time_limit(600);
+
+
 		$validator = Validator::make($request->all(), [
 			'thread_id' => 'required|integer',
 			'url' => 'required|string',
@@ -57,8 +60,8 @@ class ImageController extends Controller
 		// $file_path = mb_convert_encoding($file_path, 'SJIS');
 
 		# check if file already exist / downloaded
-		if(file_exists($file_path)) {
-			if($source_image_size == filesize($file_path)) {
+		if(file_exists(mb_convert_encoding($file_path, 'SJIS'))) {
+			if($source_image_size == filesize(mb_convert_encoding($file_path, 'SJIS'))) {
 				$image = Image::where('thread_id', $thread_id)->where('url', $url)->where('download_status', 1)->first();
 				if($image == null || $image->count() != 1) {
 					$image = new Image();
@@ -87,12 +90,12 @@ class ImageController extends Controller
 			# case where the source image has been modified somehow (size, resolution, or entirely different image with same name and url)
 			else {
 				// get filesize before rename. do this before rename so filesize is known even after rename
-				$existing_old_image_filesize = filesize($file_path) || 0;
+				$existing_old_image_filesize = filesize(mb_convert_encoding($file_path, 'SJIS')) || 0;
 				# rename old file (before redownload the new one)
-				$existing_image_date = date('YmdHis', filemtime($file_path));
-				$path_parts = pathinfo($file_path);
+				$existing_image_date = date('YmdHis', filemtime(mb_convert_encoding($file_path, 'SJIS')));
+				$path_parts = pathinfo(mb_convert_encoding($file_path, 'SJIS'));
 				$new_file_path = $path_parts['dirname'] . '\\' . $path_parts['filename'] . '_' . $existing_image_date . '.' . $path_parts['extension'];
-				rename($file_path, $new_file_path);
+				rename(mb_convert_encoding($file_path, 'SJIS'), $new_file_path);
 
 				$image = Image::where('thread_id', $thread_id)->where('url', $url)->where('download_status', 1)->first();
 				// create new record for modified/false image in case it doesn't exist on database. New image metadata will be created after save success, not here
