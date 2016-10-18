@@ -199,7 +199,7 @@ class ThreadController extends Controller
 
 	protected function isDuplicateThread($url) {
 		try {
-			$existingThreadCount = Thread::where('url', $url)->whereIn('.status', array(1,2,3))->get()->count();
+			$existingThreadCount = Thread::where('url', $url)->whereIn('status', array(1,2,3))->get()->count();
 			if($existingThreadCount > 0) {
 				return true;
 			}
