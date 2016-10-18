@@ -38,7 +38,7 @@ class ImageController extends Controller
 		$thread = Thread::find($thread_id);
 
 		# prepare directory
-		$this->prepareDirectory($thread->download_directory);
+		// $this->prepareDirectory($thread->download_directory);
 
 		# get image size
 		$headers = $this->retrieveHeaders($url);
@@ -54,6 +54,7 @@ class ImageController extends Controller
 		$source_image_size = $content_length;
 		$image_name = basename($url);
 		$file_path = $thread->download_directory . "\\" . $image_name;
+		// $file_path = mb_convert_encoding($file_path, 'SJIS');
 
 		# check if file already exist / downloaded
 		if(file_exists($file_path)) {
@@ -122,8 +123,9 @@ class ImageController extends Controller
 
 		$save_success = false;
 		for ($iteration=0; $iteration < 3; $iteration++) { 
-			$written_byte = $this->saveImageWithProxy($url, $file_path);
-			if($source_image_size == filesize($file_path) && $source_image_size == $written_byte) {
+			$file_path_encoded = mb_convert_encoding($file_path, 'SJIS');
+			$written_byte = $this->saveImageWithProxy($url, $file_path_encoded);
+			if($source_image_size == filesize($file_path_encoded) && $source_image_size == $written_byte) {
 				$save_success = true;
 				break;
 			}
@@ -171,6 +173,7 @@ class ImageController extends Controller
 		$image = Image::find($id);
 		$thread = Thread::find($image->thread_id);
 		$file_path = $thread->download_directory . '\\' . $image->name;
+		// $file_path = mb_convert_encoding($file_path, 'SJIS');
 
 		if(!is_dir('exclusions')) {
 			mkdir('exclusions', 777);
@@ -190,6 +193,7 @@ class ImageController extends Controller
 		$image = Image::find($id);
 		$thread = Thread::find($image->thread_id);
 		$file_path = $thread->download_directory . '\\' . $image->name;
+		// $file_path = mb_convert_encoding($file_path, 'SJIS');
 		if(file_exists($file_path)) {
 			if(unlink($file_path)) {
 				$image->download_status = 2;
@@ -219,6 +223,7 @@ class ImageController extends Controller
 			}
 			curl_close ($ch);
 
+			// $file_path = mb_convert_encoding($file_path, 'SJIS'); // questionable duplicate
 			$fp = fopen($file_path, 'x');
 			$written_byte = fwrite($fp, $raw);
 			fclose($fp);
@@ -271,6 +276,7 @@ class ImageController extends Controller
 
 			// $img = json_decode(trim($raw), TRUE);
 
+			// $file_path = mb_convert_encoding($file_path, 'SJIS'); // questionable duplicate
 			$fp = fopen($file_path, 'w');
 			$written_byte = fwrite($fp, $raw);
 			fclose($fp);
