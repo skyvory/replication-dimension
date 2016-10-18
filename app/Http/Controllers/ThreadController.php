@@ -226,7 +226,7 @@ class ThreadController extends Controller
 		$str = trim(preg_replace('/\s+/', ' ', $html)); // supports line breaks inside <title>
 		preg_match("/\<title\>(.*)\<\/title\>/i", $str, $match); // ignore case
 
-		$title = $match[1];
+		$title = $match[1] ? $match[1] : "";
 
 		$title_encoding = mb_detect_encoding($match[1]);
 		if($title_encoding == false || $title_encoding != 'ASCII' || $title_encoding != 'UTF-8') {
@@ -265,6 +265,9 @@ class ThreadController extends Controller
 			$result = curl_exec($ch);
 
 			$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+			if($result == false) {
+				throw new \Exception(curl_error($ch), curl_errno($ch));
+			}
 			curl_close($ch);
 
 			return array('http_code' => $http_code, 'content' => $result);
