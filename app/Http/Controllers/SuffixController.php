@@ -14,7 +14,7 @@ class SuffixController extends Controller
 
 	public function getSuffixes() {
 		try {
-			$suffixes = Suffix::all();
+			$suffixes = Suffix::orderBy('name')->get();
 		} catch (\Exception $e) {
 			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Get failed');
 		}
