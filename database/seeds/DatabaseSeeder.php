@@ -30,36 +30,15 @@ class DatabaseSeeder extends Seeder
 				'name' => 'Safebooru',
 				'domain' => 'safebooru.org',
 			],
+			[
+				'id' => '3',
+				'name' => '2chan',
+				'domain' => '2chan.net',
+			],
 		);
 
 		foreach($sites as $site) {
 			Site::create($site);
-		}
-
-		DB::table('threads')->delete();
-		$threads = array(
-			[
-				'id' => '1',
-				'site_id' => '1',
-				'name' => 'manga',
-				'url' => 'http://www.deviantart.com/browse/all/manga',
-				'status' => '1',
-				'download_directory' => 'C:/downloadingrep',
-				'last_update' => '2016-09-13 01:02:03',
-			],
-			[
-				'id' => '2',
-				'site_id' => '2',
-				'name' => 'browse',
-				'url' => 'http://www.deviantart.com/browse/all/manga',
-				'status' => '1',
-				'download_directory' => 'C:/downloadingrep',
-				'last_update' => '2016-09-13 01:02:03',
-			],
-		);
-
-		foreach($threads as $thread) {
-			Thread::create($thread);
 		}
 
 	}
