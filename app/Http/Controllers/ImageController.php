@@ -278,8 +278,21 @@ class ImageController extends Controller
 			curl_close ($ch);
 
 			// $img = json_decode(trim($raw), TRUE);
+			// $file_path = 
 
-			// $file_path = mb_convert_encoding($file_path, 'SJIS'); // questionable duplicate
+			$isEncrypted = true;
+			if($isEncrypted) {
+				$key = pack('H*', "16a6d7f49404004f737be38f9caec915a411a5380ea1604edbaf34ebc398f6a4");
+				$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
+				$ciphertext_dec = base64_decode($raw);
+				$iv_dec = substr($ciphertext_dec, 0, $iv_size);
+				$ciphertext_dec = substr($ciphertext_dec, $iv_size);
+				$raw = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, $ciphertext_dec, MCRYPT_MODE_CBC, $iv_dec);
+				$raw = base64_decode($raw);
+				$raw = rtrim($raw, "\0");
+			}
+
+			mb_convert_encoding($file_path, 'SJIS'); // questionable duplicate
 			$fp = fopen($file_path, 'w');
 			$written_byte = fwrite($fp, $raw);
 			fclose($fp);

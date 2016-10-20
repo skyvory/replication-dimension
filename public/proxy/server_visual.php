@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+@ini_set('display_errors', 0);
 
 // RESPONDING END
 
@@ -29,6 +31,42 @@ if($raw == false) {
 $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
 $header = substr($raw, 0, $header_size);
 $body = substr($raw, $header_size);
+
+curl_close( $ch );
+
+
+$encrypt_image = true;
+if($encrypt_image) {
+	$body = base64_encode($body);
+	$key = pack('H*', "16a6d7f49404004f737be38f9caec915a411a5380ea1604edbaf34ebc398f6a4");
+	$key_size = strlen($key);
+
+	// create a random IV to use with CBC encoding
+	$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
+	$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+	$ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $body, MCRYPT_MODE_CBC, $iv);
+	// prepend the IV for it to be  available for decryption
+	$ciphertext = $iv . $ciphertext;
+	$ciphertext_base64 = base64_encode($ciphertext);
+
+	if(false) {
+		// start test decipher
+		$key = pack('H*', "16a6d7f49404004f737be38f9caec915a411a5380ea1604edbaf34ebc398f6a4");
+		$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
+		$ciphertext_dec = base64_decode($ciphertext_base64);
+		$iv_dec = substr($ciphertext_dec, 0, $iv_size);
+		$ciphertext_dec = substr($ciphertext_dec, $iv_size);
+		$raw = mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, $ciphertext_dec, MCRYPT_MODE_CBC, $iv_dec);
+		print base64_decode($raw);
+		return;
+		// end test decipher
+	}
+
+	print $ciphertext_base64;
+	return;
+}
+
+
 // header("Content-Type: image/png");
 print $body;
 return;
@@ -47,7 +85,6 @@ return;
 // print $body;
 // return;
 
-curl_close( $ch );
 
 
 // header needed if directly showing image from php
