@@ -128,9 +128,13 @@ class ImageController extends Controller
 		for ($iteration=0; $iteration < 3; $iteration++) { 
 			$file_path_encoded = mb_convert_encoding($file_path, 'SJIS');
 			$written_byte = $this->saveImageWithProxy($url, $file_path_encoded);
+			// check if valid image size as source
 			if($source_image_size == filesize($file_path_encoded) && $source_image_size == $written_byte) {
-				$save_success = true;
-				break;
+				// check if valid image type, as possible source/proxy hiccup that return invalid image
+				if(exif_imagetype($file_path_encoded) != false) {
+					$save_success = true;
+					break;
+				}
 			}
 		}
 		// var_dump($written_byte);
@@ -201,7 +205,7 @@ class ImageController extends Controller
 		$image = Image::find($id);
 		$thread = Thread::find($image->thread_id);
 		$file_path = $thread->download_directory . '\\' . $image->name;
-		
+
 		if(preg_match('/[^\x20-\x7f]/', $file_path)) {
 			$file_path = mb_convert_encoding($file_path, 'SJIS');
 		}
