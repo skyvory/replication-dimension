@@ -182,6 +182,11 @@ class ImageController extends Controller
 			mkdir('exclusions', 777);
 		}
 
+		// check if string consists a non-ascii character
+		if(preg_match('/[^\x20-\x7f]/', $file_path)) {
+			$file_path = mb_convert_encoding($file_path, 'SJIS');
+		}
+
 		if(file_exists($file_path)) {
 			$ren = rename($file_path, 'exclusions/' . $image->name);
 			if($ren) {
@@ -196,7 +201,11 @@ class ImageController extends Controller
 		$image = Image::find($id);
 		$thread = Thread::find($image->thread_id);
 		$file_path = $thread->download_directory . '\\' . $image->name;
-		// $file_path = mb_convert_encoding($file_path, 'SJIS');
+		
+		if(preg_match('/[^\x20-\x7f]/', $file_path)) {
+			$file_path = mb_convert_encoding($file_path, 'SJIS');
+		}
+
 		if(file_exists($file_path)) {
 			if(unlink($file_path)) {
 				$image->download_status = 2;
