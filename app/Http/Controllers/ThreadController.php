@@ -237,7 +237,7 @@ class ThreadController extends Controller
 	}
 
 	protected function getHtmlContent($url) {
-		$use_proxy = true;
+		$use_proxy = false;
 
 		if($use_proxy) {
 			$responder = 'https://quantum.000webhostapp.com/relay/thread/index.php';
@@ -280,9 +280,14 @@ class ThreadController extends Controller
 			curl_setopt($content, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($content, CURLOPT_USERAGENT, $agent);
 			$result = curl_exec($content);
+			$http_code = curl_getinfo($content, CURLINFO_HTTP_CODE);
+			if($result == false) {
+				throw new \Exception(curl_error($content), curl_errno($content));
+			}
 			curl_close($content);
 
-			return $result;
+			return array('http_code' => $http_code, 'content' => $result);
+			// return $result;
 		}
 	}
 

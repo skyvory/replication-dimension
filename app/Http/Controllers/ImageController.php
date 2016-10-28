@@ -127,7 +127,7 @@ class ImageController extends Controller
 		$save_success = false;
 		for ($iteration=0; $iteration < 3; $iteration++) { 
 			$file_path_encoded = mb_convert_encoding($file_path, 'SJIS');
-			$written_byte = $this->saveImageWithProxy($url, $file_path_encoded);
+			$written_byte = $this->saveImage($url, $file_path_encoded);
 			// check if valid image size as source
 			if($source_image_size == filesize($file_path_encoded) && $source_image_size == $written_byte) {
 				// check if valid image type, as possible source/proxy hiccup that return invalid image
@@ -240,6 +240,7 @@ class ImageController extends Controller
 			curl_close ($ch);
 
 			// $file_path = mb_convert_encoding($file_path, 'SJIS'); // questionable duplicate
+			mb_convert_encoding($file_path, 'SJIS'); // questionable duplicate
 			$fp = fopen($file_path, 'x');
 			$written_byte = fwrite($fp, $raw);
 			fclose($fp);
@@ -340,7 +341,7 @@ class ImageController extends Controller
 	}
 
 	protected function retrieveHeaders($url) {
-		$use_proxy = true;
+		$use_proxy = false;
 
 		if($use_proxy) {
 			$responder = 'https://quantum.000webhostapp.com/relay/header/index.php';
