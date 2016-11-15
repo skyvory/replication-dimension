@@ -206,12 +206,18 @@ class ImageController extends Controller
 		$thread = Thread::find($image->thread_id);
 		$file_path = $thread->download_directory . '\\' . $image->name;
 
+		if(!is_dir('deletions')) {
+			mkdir('deletions', 777);
+		}
+
 		if(preg_match('/[^\x20-\x7f]/', $file_path)) {
 			$file_path = mb_convert_encoding($file_path, 'SJIS');
 		}
 
 		if(file_exists($file_path)) {
-			if(unlink($file_path)) {
+			$ren = rename($file_path, 'deletions/' . $image->name);
+			// if(unlink($file_path)) {
+			if($ren) {
 				$image->download_status = 2;
 				$image->save();
 			}

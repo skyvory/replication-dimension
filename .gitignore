@@ -7,3 +7,4 @@ Homestead.yaml
 .env
 /public/thumbnails
 /public/exclusions
+/public/deletions
