@@ -263,7 +263,7 @@ class ImageController extends Controller
 
 	protected function saveImageWithProxy($url, $file_path)
 	{
-		$responder = 'https://quantum.000webhostapp.com/relay/visual/index.php';
+		$responder = config('constant.PROXY_URL') . 'relay/visual/index.php';
 
 		// prepare POST string
 		$fields = array(
@@ -347,10 +347,8 @@ class ImageController extends Controller
 	}
 
 	protected function retrieveHeaders($url) {
-		$use_proxy = true;
-
-		if($use_proxy) {
-			$responder = 'https://quantum.000webhostapp.com/relay/header/index.php';
+		if(config('constant.USE_PROXY')) {
+			$responder = config('constant.PROXY_URL') . 'relay/header/index.php';
 
 			$fields = array(
 				'url' => $url

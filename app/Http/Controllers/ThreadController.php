@@ -237,10 +237,8 @@ class ThreadController extends Controller
 	}
 
 	protected function getHtmlContent($url) {
-		$use_proxy = true;
-
-		if($use_proxy) {
-			$responder = 'https://quantum.000webhostapp.com/relay/thread/index.php';
+		if(config('constant.USE_PROXY')) {
+			$responder = config('constant.PROXY_URL') . 'relay/thread/index.php';
 
 			$fields = array(
 				'url' => $url
