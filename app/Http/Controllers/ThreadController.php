@@ -97,6 +97,7 @@ class ThreadController extends Controller
 				'thread' => array(
 					'id' => $thread->id,
 					'name' => $thread_name,
+					'download_directory' => $thread->download_directory,
 					'last_update' => $thread->last_update,
 					),
 				'images' => $images
