@@ -267,14 +267,16 @@ class ImageController extends Controller
 	{
 		$responder = config('constant.PROXY_URL') . 'relay/visual/index.php';
 
+		$is_encrypted = false;
 		if(config('constant.USE_REQUEST_ENCRYPTION')) {
 			$url = $this->encryptString($url);
+			$is_encrypted = true;
 		}
 
 		// prepare POST string
 		$fields = array(
 			'url' => $url,
-			'is_encrypted' => true
+			'is_encrypted' => $is_encrypted
 			);
 		$postvars = '';
 		$sep = ' ';
