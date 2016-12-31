@@ -58,4 +58,36 @@ trait Writer
 		$img->save($thumbnail_file_path, 50);
 		return true;
 	}
+
+	public function parseSyntacticDirectory($directory, $options) {
+		if(!empty($options['title'])) {
+			$title = $options['title'];
+		}
+		if(!empty($options['url'])) {
+			$url = $options['url'];
+		}
+
+		if(!empty($directory)) {
+			preg_match_all("#\{([^\}]*)\}#", $directory, $matches);
+			$i = 0;
+			foreach($matches[1] as $value) {
+				switch ($value) {
+					case '2ch:id':
+						$id = substr($url, strrpos($url, '/') + 1);
+						$id = pathinfo($id, PATHINFO_FILENAME);
+						$directory = str_replace($matches[0][$i], $id, $directory);
+						break;
+					case '2ch:title':
+						$directory = str_replace($matches[0][$i], $title, $directory);
+						break;
+					default:
+						break;
+				}
+				$i++;
+			}
+			$restricted_windows_filename_chars = array_merge(array_map('chr', range(0,31)), array("<", ">", ":", '"', "/", "|", "?", "*"));
+			$directory = str_replace($restricted_windows_filename_chars, "", $directory);
+			return $directory;
+		}
+	}
 }

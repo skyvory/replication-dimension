@@ -63,6 +63,12 @@ class ThreadController extends Controller
 
 		$thread_name = $this->getSiteTitle($html_content);
 
+		$dir_options = array(
+			'title' => $thread_name,
+			'url' => $url
+		);
+		$download_directory = $this->parseSyntacticDirectory($download_directory, $dir_options);
+
 		\DB::beginTransaction();
 
 		try {
