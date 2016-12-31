@@ -86,7 +86,10 @@ trait Writer
 				$i++;
 			}
 			$restricted_windows_filename_chars = array_merge(array_map('chr', range(0,31)), array("<", ">", ":", '"', "/", "|", "?", "*"));
-			$directory = str_replace($restricted_windows_filename_chars, "", $directory);
+			$dir_pre = substr($directory, 0, 2);
+			$dir_post = substr($directory, 2);
+			$dir_post = str_replace($restricted_windows_filename_chars, "", $dir_post);
+			$directory = $dir_pre . $dir_post;
 			return $directory;
 		}
 	}
