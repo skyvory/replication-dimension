@@ -13,7 +13,7 @@ else {
 	$url = $_GET['url'];
 }
 
-if(isset($_POST['is_encrypted']) && $_POST['is_encrypted'] === true) {
+if(isset($_POST['is_encrypted']) && $_POST['is_encrypted'] == 1) {
 	$key = pack('H*', "16a6d7f49404004f737be38f9caec915a411a5380ea1604edbaf34ebc398f6a4");
 	$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, MCRYPT_MODE_CBC);
 	$ciphertext_dec = base64_decode($url);
