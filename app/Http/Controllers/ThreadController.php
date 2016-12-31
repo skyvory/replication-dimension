@@ -14,12 +14,15 @@ use Dingo\Api\Routing\Helpers;
 use App\Parsers\ParserManager;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use App\Http\Controllers\Writer;
+use App\Http\Controllers\Encrypter;
 
 class ThreadController extends Controller
 {
 	use Helpers;
 	use ParserManager;
 	use Writer;
+	use Encrypter;
+
 	public function __construct() {}
 
 	public function index()
@@ -240,8 +243,15 @@ class ThreadController extends Controller
 		if(config('constant.USE_PROXY')) {
 			$responder = config('constant.PROXY_URL') . 'relay/thread/index.php';
 
+			$is_encrypted = false;
+			if(config('constant.USE_REQUEST_ENCRYPTION')) {
+				$url = $this->encryptString($url);
+				$is_encrypted = true;
+			}
+
 			$fields = array(
-				'url' => $url
+				'url' => $url,
+				'is_encrypted' => $is_encrypted
 				);
 			$postvars = '';
 			$sep = ' ';
