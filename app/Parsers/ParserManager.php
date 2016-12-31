@@ -3,7 +3,7 @@
 namespace App\Parsers;
 use App\Parsers\DeviantartParser;
 use App\Parsers\NichanParser;
-// use x-parser
+use App\Parsers\FourchanParser;
 // use x-parser
 
 trait ParserManager
@@ -12,6 +12,7 @@ trait ParserManager
 		return [
 			'deviantart.com' => 'deviantart',
 			'2chan.net' => '2chan',
+			'4chan.org' => '4chan'
 		];
 	}
 
@@ -25,6 +26,10 @@ trait ParserManager
 				break;
 			case "2chan":
 				$analyze = new NichanParser();
+				$image_list = $analyze->parseImage($html_content);
+				break;
+			case "4chan":
+				$analyze = new FourchanParser();
 				$image_list = $analyze->parseImage($html_content);
 				break;
 			default:
