@@ -265,7 +265,7 @@ class ImageController extends Controller
 
 	protected function saveImageWithProxy($url, $file_path)
 	{
-		$responder = config('constant.PROXY_URL') . 'relay/visual/index.php';
+		$responder = config('constant.PROXY_URL') . 'relay/server_visual.php';
 
 		$is_encrypted = false;
 		if(config('constant.USE_REQUEST_ENCRYPTION')) {
@@ -357,7 +357,7 @@ class ImageController extends Controller
 
 	protected function retrieveHeaders($url) {
 		if(config('constant.USE_PROXY')) {
-			$responder = config('constant.PROXY_URL') . 'relay/header/index.php';
+			$responder = config('constant.PROXY_URL') . 'relay/server_header.php';
 
 			$fields = array(
 				'url' => $url

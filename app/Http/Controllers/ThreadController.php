@@ -241,7 +241,7 @@ class ThreadController extends Controller
 
 	protected function getHtmlContent($url) {
 		if(config('constant.USE_PROXY')) {
-			$responder = config('constant.PROXY_URL') . 'relay/thread/index.php';
+			$responder = config('constant.PROXY_URL') . 'relay/server_thread.php';
 
 			$is_encrypted = false;
 			if(config('constant.USE_REQUEST_ENCRYPTION')) {
