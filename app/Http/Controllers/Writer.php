@@ -80,6 +80,12 @@ trait Writer
 					case '2ch:title':
 						$directory = str_replace($matches[0][$i], $title, $directory);
 						break;
+					case '4ch:id':
+						// $id = substr($url, strpos($url, '/') + 1);
+						$id = explode('/', $url);
+						$id = end($id);
+						$directory = str_replace($matches[0][$i], $id, $directory);
+						break;
 					case '4ch:title':
 						$title = explode('-', $title);
 						$title = trim($title[1]) . '-' . trim($title[3]);
