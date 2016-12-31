@@ -48,6 +48,10 @@ trait Writer
 		if(!file_exists(dirname($thumbnail_file_path))) {
 			$this->prepareDirectory(dirname($thumbnail_file_path));
 		}
+		# hotfix for unsupported filetype
+		if(pathinfo($source_file_path, PATHINFO_EXTENSION) == '.webm') {
+			return false;
+		}
 		# thumbnail creation
 		$source_file_path = mb_convert_encoding($source_file_path, "SJIS");
 		$img = InterventionImage::make($source_file_path);
