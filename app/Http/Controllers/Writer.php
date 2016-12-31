@@ -80,6 +80,11 @@ trait Writer
 					case '2ch:title':
 						$directory = str_replace($matches[0][$i], $title, $directory);
 						break;
+					case '4ch:title':
+						$title = explode('-', $title);
+						$title = trim($title[1]) . '-' . trim($title[3]);
+						$directory = str_replace($matches[0][$i], $title, $directory);
+						break;
 					default:
 						break;
 				}
