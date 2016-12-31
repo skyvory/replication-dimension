@@ -13,10 +13,12 @@ use Dingo\Api\Routing\Helpers;
 use InterventionImage;
 use App\Http\Controllers\Writer;
 use Validator;
+use App\Http\Controllers\Encrypter;
 
 class ImageController extends Controller
 {
 	use Writer;
+	use Encrypter;
 
 	public function __construct() {}
 
@@ -265,9 +267,14 @@ class ImageController extends Controller
 	{
 		$responder = config('constant.PROXY_URL') . 'relay/visual/index.php';
 
+		if(config('constant.USE_REQUEST_ENCRYPTION')) {
+			$url = $this->encryptString($url);
+		}
+
 		// prepare POST string
 		$fields = array(
-			'url' => $url
+			'url' => $url,
+			'is_encrypted' => true
 			);
 		$postvars = '';
 		$sep = ' ';
