@@ -49,7 +49,7 @@ trait Writer
 			$this->prepareDirectory(dirname($thumbnail_file_path));
 		}
 		# hotfix for unsupported filetype
-		if(pathinfo($source_file_path, PATHINFO_EXTENSION) == '.webm') {
+		if(pathinfo($source_file_path, PATHINFO_EXTENSION) == '.webm' || pathinfo($source_file_path, PATHINFO_EXTENSION) == '.gif') {
 			return false;
 		}
 		# thumbnail creation
