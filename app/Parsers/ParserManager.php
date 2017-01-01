@@ -12,7 +12,8 @@ trait ParserManager
 		return [
 			'deviantart.com' => 'deviantart',
 			'2chan.net' => '2chan',
-			'4chan.org' => '4chan'
+			'4chan.org' => '4chan',
+			'7chan.org' => '7chan'
 		];
 	}
 
@@ -30,6 +31,10 @@ trait ParserManager
 				break;
 			case "4chan":
 				$analyze = new FourchanParser();
+				$image_list = $analyze->parseImage($html_content);
+				break;
+			case "7chan":
+				$analyze = new NanachanParser();
 				$image_list = $analyze->parseImage($html_content);
 				break;
 			default:
