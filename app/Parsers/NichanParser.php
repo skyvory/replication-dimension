@@ -41,7 +41,7 @@ class NichanParser
 		// regex, because ffff domdocument which cut the html content for no reason
 		// preg_match_all("#https?:\/\/\S+\.2chan.net\/\S+\/src\/\S+\.(jpg|png|gif|webp|jpeg|bmp)#", $html_content, $match);
 		// case with no domain on URL
-		preg_match_all("#\/\S+\/src\/\S+\.(jpg|png|gif|webp|jpeg|bmp)#", $html_content, $match);
+		preg_match_all("#\/\S+\/src\/\S+\.(jpg|png|gif|webp|jpeg|bmp|webm)#", $html_content, $match);
 
 		// var_dump($match);
 		foreach ($match[0] as $key => $value) {
