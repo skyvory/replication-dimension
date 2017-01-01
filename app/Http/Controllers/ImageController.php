@@ -127,7 +127,7 @@ class ImageController extends Controller
 		// }
 
 		$save_success = false;
-		for ($iteration=0; $iteration < 3; $iteration++) { 
+		for ($iteration=0; $iteration < 13; $iteration++) { 
 			$file_path_encoded = mb_convert_encoding($file_path, 'SJIS');
 			$written_byte = $this->saveImageWithProxy($url, $file_path_encoded);
 			// check if valid image size as source
