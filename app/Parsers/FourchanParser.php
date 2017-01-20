@@ -8,7 +8,12 @@ class FourchanParser
     {
         $image_list = array();
         
-        preg_match_all("#is.4chan.org\/\S+\/\S+\.(jpg|png|gif|webp|jpeg|bmp|webm)#", $html_content, $match);
+        /*
+        is.4chan.org\/\S+\/\S+\.(jpg|png|gif|webp|jpeg|bmp|webm)
+        is((0-9)|\w*?).4chan.org\/\S+\/\S+\.(jpg|png|gif|webp|jpeg|bmp|webm)
+        (0-9|\w*?) : optional string after is and before . (dot)
+        */
+        preg_match_all("#is((0-9)|\w*?).4chan.org\/\S+\/\S+\.(jpg|png|gif|webp|jpeg|bmp|webm)#", $html_content, $match);
 
         foreach ($match[0] as $key => $value) {
             $value = 'http://' . $value;
