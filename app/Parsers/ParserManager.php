@@ -37,6 +37,10 @@ trait ParserManager
 				$analyze = new NanachanParser();
 				$image_list = $analyze->parseImage($html_content);
 				break;
+			case "desuarchive":
+				$analyze = new DesuarchiveParser();
+				$image_list = $analyze->parseImage($html_content);
+				break;
 			default:
 				$image_list = array('no'=>'no');
 		}
