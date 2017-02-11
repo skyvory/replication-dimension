@@ -4,7 +4,7 @@ namespace App\Parsers;
 use App\Parsers\DeviantartParser;
 use App\Parsers\NichanParser;
 use App\Parsers\FourchanParser;
-// use x-parser
+use App\Parsers\DesuarchiveParser;
 
 trait ParserManager
 {
