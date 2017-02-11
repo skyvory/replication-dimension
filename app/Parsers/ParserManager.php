@@ -5,6 +5,7 @@ use App\Parsers\DeviantartParser;
 use App\Parsers\NichanParser;
 use App\Parsers\FourchanParser;
 use App\Parsers\DesuarchiveParser;
+use App\Parsers\GurochanParser;
 
 trait ParserManager
 {
@@ -39,6 +40,10 @@ trait ParserManager
 				break;
 			case "desuarchive":
 				$analyze = new DesuarchiveParser();
+				$image_list = $analyze->parseImage($html_content);
+				break;
+			case "gurochan":
+				$analyze = new GurochanParser();
 				$image_list = $analyze->parseImage($html_content);
 				break;
 			default:
