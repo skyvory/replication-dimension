@@ -15,6 +15,7 @@ use App\Parsers\ParserManager;
 use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use App\Http\Controllers\Writer;
 use App\Http\Controllers\Encrypter;
+use Illuminate\Support\Facades\Log;
 
 class ThreadController extends Controller
 {
