@@ -234,6 +234,7 @@ class ThreadController extends Controller
 
 	protected function getSiteTitle($html) {
 		$str = trim(preg_replace('/\s+/', ' ', $html)); // supports line breaks inside <title>
+		$str = substr($str, 0, 10000); // ommit the rest of too long html string
 		preg_match("/\<title\>(.*)\<\/title\>/i", $str, $match); // ignore case
 
 		$title = $match[1] ? $match[1] : "";
