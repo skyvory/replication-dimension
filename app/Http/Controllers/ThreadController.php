@@ -195,6 +195,9 @@ class ThreadController extends Controller
 			throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException('Thread is closed.');
 		}
 
+		$download_directory = $thread->download_directory;
+		$this->writeHtmlToDisk($html_content, $download_directory);
+		
 		$site_name = $this->getSiteMatch($thread->url)['name'];
 		$images = $this->parseThreadContent($site_name, $html_content);
 
