@@ -1,0 +1,10 @@
+<?php
+// Copy this and rename to constant.php
+return [
+    'USE_PROXY' => false,
+    'PROXY_URL' => 'YOURURLWITHPROXYSCRIPT',
+    'USE_REQUEST_ENCRYPTION' => true,
+    'ENCRYPTION_HASH' => 'ENCRYPTIONHASHONTHESERVER',
+    'TRUE_PROXY_ADRESS' => '127.0.0.1:8080',
+    'USE_TRUE_PROXY' => false
+];
