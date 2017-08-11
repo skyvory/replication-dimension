@@ -248,6 +248,12 @@ class ImageController extends Controller
 			curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
 			curl_setopt($ch, CURLOPT_USERAGENT, $agent);
 			// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			if(config('constant.USE_TRUE_PROXY')) {
+				curl_setopt($ch, CURLOPT_PROXY, config('constant.TRUE_PROXY_ADRESS'));
+			//$proxyauth = 'user:password';
+				//curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
+				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // If url has redirects then go to the final redirected URL.
+			}
 			$raw = curl_exec($ch);
 			if($raw == false) {
 				throw new \Exception(curl_error($ch), curl_errno($ch));

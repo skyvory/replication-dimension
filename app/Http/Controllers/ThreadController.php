@@ -51,7 +51,6 @@ class ThreadController extends Controller
 		$site = $this->getSiteMatch($url);
 		$site_id = $site['id'];
 		$site_name = $site['name'];
-
 		// $html_content = file_get_contents(public_path() . '\futaba2.htm');
 		// $html_content = file_get_contents(public_path() . '\example_2ch.htm');
 		$page = $this->getHtmlContent($url);
@@ -299,6 +298,12 @@ class ThreadController extends Controller
 			curl_setopt($content, CURLOPT_URL, $url);
 			curl_setopt($content, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($content, CURLOPT_USERAGENT, $agent);
+			if(config('constant.USE_TRUE_PROXY')) {
+				curl_setopt($content, CURLOPT_PROXY, config('constant.TRUE_PROXY_ADRESS'));
+			//$proxyauth = 'user:password';
+				//curl_setopt($content, CURLOPT_PROXYUSERPWD, $proxyauth);
+				curl_setopt($content, CURLOPT_FOLLOWLOCATION, 1); // If url has redirects then go to the final redirected URL.
+			}
 			$result = curl_exec($content);
 			$http_code = curl_getinfo($content, CURLINFO_HTTP_CODE);
 			if($result == false) {
