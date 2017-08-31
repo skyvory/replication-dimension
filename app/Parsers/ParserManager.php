@@ -6,6 +6,7 @@ use App\Parsers\NichanParser;
 use App\Parsers\FourchanParser;
 use App\Parsers\DesuarchiveParser;
 use App\Parsers\GurochanParser;
+use App\Parsers\EightchanParser;
 
 trait ParserManager
 {
@@ -44,6 +45,10 @@ trait ParserManager
 				break;
 			case "gurochan":
 				$analyze = new GurochanParser();
+				$image_list = $analyze->parseImage($html_content);
+				break;
+			case "8chan":
+				$analyze = new EightchanParser();
 				$image_list = $analyze->parseImage($html_content);
 				break;
 			default:
