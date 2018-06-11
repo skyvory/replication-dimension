@@ -24,7 +24,8 @@ class ImageController extends Controller
 
 	public function load(Request $request)
 	{
-		set_time_limit(60);
+		set_time_limit(30);
+		// set_time_limit(60);
 
 
 		$validator = Validator::make($request->all(), [
@@ -127,7 +128,7 @@ class ImageController extends Controller
 		// }
 
 		$save_success = false;
-		for ($iteration=0; $iteration < 13; $iteration++) { 
+		for ($iteration=0; $iteration < 3; $iteration++) { 
 			$file_path_encoded = mb_convert_encoding($file_path, 'SJIS');
 			$written_byte = -1;
 			if(config('constant.USE_PROXY')) {
@@ -246,7 +247,7 @@ class ImageController extends Controller
 			curl_setopt($ch, CURLOPT_HEADER, 0);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
-			curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+			curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 			// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			if(config('constant.USE_TRUE_PROXY')) {
 				curl_setopt($ch, CURLOPT_PROXY, config('constant.TRUE_PROXY_ADRESS'));
@@ -311,6 +312,7 @@ class ImageController extends Controller
 			curl_setopt($ch,CURLOPT_POST,1);
 			curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
 			$raw = curl_exec($ch);
 			// return $raw;
