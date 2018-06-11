@@ -324,7 +324,7 @@ class ThreadController extends Controller
 	}
 
 	protected function excerptDomain($url) {
-		$urlMap = array('com', 'net', 'co.uk', 'org', 'co.jp', 'goo.ne', 'ch');
+		$urlMap = array('com', 'net', 'co.uk', 'org', 'co.jp', 'goo.ne', 'ch', 'moe');
 
 		$host = "";
 		$urlData = parse_url($url);

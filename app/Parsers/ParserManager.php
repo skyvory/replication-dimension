@@ -7,6 +7,7 @@ use App\Parsers\FourchanParser;
 use App\Parsers\DesuarchiveParser;
 use App\Parsers\GurochanParser;
 use App\Parsers\EightchanParser;
+use App\Parsers\ArchivedmoeParser;
 
 trait ParserManager
 {
@@ -49,6 +50,10 @@ trait ParserManager
 				break;
 			case "8chan":
 				$analyze = new EightchanParser();
+				$image_list = $analyze->parseImage($html_content);
+				break;
+			case "archivedmoe":
+				$analyze = new ArchivedmoeParser();
 				$image_list = $analyze->parseImage($html_content);
 				break;
 			default:
