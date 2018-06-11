@@ -23,7 +23,7 @@ class NichanParser
 		\.	literal .
 		(jpg|png|gif)	extensions choice 
 		*/
-		$pattern = 'https?:\/\/\S+\.2chan.net\/\S+\/src\/\S+\.(jpg|png|gif|webp|jpeg|bmp)';
+		$pattern = 'https?:\/\/\S+\.2chan.net\/\S+\/src\/\S+\.(jpg|png|gif|webp|jpeg|bmp|mp4|rar|zip|7z)';
 
 		$image_list = array();
 
