@@ -203,7 +203,7 @@ class ImageController extends Controller
 		}
 
 		if(file_exists($file_path)) {
-			$ren = rename($file_path, 'exclusions/' . $image->name);
+			$ren = rename($file_path, 'D:/ch/exclusions/' . $image->name);
 			if($ren) {
 				$image->download_status = 2;
 				$image->save();
@@ -226,7 +226,7 @@ class ImageController extends Controller
 		}
 
 		if(file_exists($file_path)) {
-			$ren = rename($file_path, 'deletions/' . $image->name);
+			$ren = rename($file_path, 'D:/ch/deletions/' . $image->name);
 			// if(unlink($file_path)) {
 			if($ren) {
 				$image->download_status = 2;
