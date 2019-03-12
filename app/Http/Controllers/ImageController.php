@@ -24,8 +24,8 @@ class ImageController extends Controller
 
 	public function load(Request $request)
 	{
-		set_time_limit(30);
-		// set_time_limit(60);
+		// set_time_limit(30);
+		set_time_limit(120);
 
 
 		$validator = Validator::make($request->all(), [
