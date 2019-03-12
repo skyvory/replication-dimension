@@ -83,7 +83,7 @@ class ImageController extends Controller
 						'id' => $image->id,
 						'name' => $image_name,
 						'size' => $source_image_size,
-						'thumb' => 'thumbnails/' . $thread_id . '/~thumb_' . $image_name,
+						'thumb' => 'thumbnails/' . $thread_id . '/~thumb_' . $image_name . '.jpg',
 					],
 					'meta' => [
 						'message' => 'Exact image already exist in assigned directory!',
@@ -181,7 +181,7 @@ class ImageController extends Controller
 				'id' => $image->id,
 				'name' => $image_name,
 				'size' => $source_image_size,
-				'thumb' => 'thumbnails/' . $thread_id . '/~thumb_' . $image_name,
+				'thumb' => 'thumbnails/' . $thread_id . '/~thumb_' . $image_name . '.jpg',
 			]
 		]);
 	}

@@ -40,6 +40,8 @@ trait Writer
 	}
 
 	public function materializeThumbnail($source_file_path, $thumbnail_file_path) {
+		// Direct file as thumbnail
+		// return true;
 		// check if thumbnail already exists
 		if(file_exists($thumbnail_file_path)) {
 			return;
@@ -55,11 +57,12 @@ trait Writer
 		# thumbnail creation
 		$source_file_path = mb_convert_encoding($source_file_path, "SJIS");
 		$img = InterventionImage::make($source_file_path);
-		$img->resize(300, null, function($constraint) {
+		$img->encode('jpg');
+		$img->resize(300, 300, function($constraint) {
 			$constraint->aspectRatio();
 			$constraint->upsize();
 		});
-		$img->save($thumbnail_file_path, 50);
+		$img->save($thumbnail_file_path . ".jpg", 50);
 		return true;
 	}
 
