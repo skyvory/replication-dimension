@@ -254,6 +254,7 @@ class ImageController extends Controller
 			//$proxyauth = 'user:password';
 				//curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
 				curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1); // If url has redirects then go to the final redirected URL.
+				curl_setopt($ch, CURLOPT_VERBOSE, 1);
 			}
 			$raw = curl_exec($ch);
 			if($raw == false) {
@@ -405,7 +406,63 @@ class ImageController extends Controller
 			return $result;
 		}
 		else {
-			return get_headers($url);
+			
+			if(config('constant.USE_TRUE_PROXY')) {
+				$curl = curl_init();
+				curl_setopt_array(
+					$curl,
+					array(
+						CURLOPT_HEADER => true,
+						CURLOPT_NOBODY => true,
+						CURLOPT_RETURNTRANSFER => true,
+						CURLOPT_PROXY => config('constant.TRUE_PROXY_ADRESS'),
+						CURLOPT_URL => $url
+					)
+				);
+				$headers = explode( "\n", curl_exec($curl));
+				curl_close( $curl );
+				return $headers;
+			}
+			else {
+				// $agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0';
+
+				// $curl = curl_init();
+				// curl_setopt_array(
+				// 	$curl,
+				// 	array(
+				// 		CURLOPT_HEADER => true,
+				// 		CURLOPT_NOBODY => true,
+				// 		CURLOPT_RETURNTRANSFER => true,
+				// 		CURLOPT_USERAGENT => $agent,
+				// 		CURLOPT_URL => $url
+				// 	)
+				// );
+				// $headers = explode( "\n", curl_exec($curl));
+				// curl_close( $curl );
+				// return $headers;
+				return get_headers($url);
+			}
+
+			// $ch = curl_init( $url );
+			// $agent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:10.0) Gecko/20100101 Firefox/10.0';
+
+			// curl_setopt($ch, CURLOPT_URL, $url);
+			// curl_setopt($ch, CURLOPT_HEADER, 0);
+			// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			// curl_setopt($ch, CURLOPT_USERAGENT, $agent);
+
+			// $raw = curl_exec($ch);
+			// // if($raw == false) {
+			// // 	print("X");
+			// // 	throw new \Exception(curl_error($ch), curl_errno($ch));
+			// // }
+			// return $raw;
+
+			// $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+			// $header = substr($raw, 0, $header_size);
+			// return $header;
+
+			return 1;
 		}
 	}
 }
