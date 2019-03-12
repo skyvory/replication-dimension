@@ -48,6 +48,7 @@ class ImageController extends Controller
 
 		# get image size
 		$headers = $this->retrieveHeaders($url);
+		// var_dump($headers);
 		$content_length = -1;
 		foreach($headers as $head) {
 			preg_match('/Content-Length: (\d+)/', $head, $match);
@@ -269,6 +270,7 @@ class ImageController extends Controller
 			fclose($fp);
 		}
 		catch(\Exception $e) {
+			// return 0;
 			trigger_error(sprintf(
 				'curl failed with error #%d: %s',
 				$e->getCode(), $e->getMessage()),
