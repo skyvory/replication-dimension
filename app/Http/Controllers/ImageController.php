@@ -129,7 +129,7 @@ class ImageController extends Controller
 		// }
 
 		$save_success = false;
-		for ($iteration=0; $iteration < 3; $iteration++) { 
+		for ($iteration=0; $iteration < 1; $iteration++) { 
 			$file_path_encoded = mb_convert_encoding($file_path, 'SJIS');
 			$written_byte = -1;
 			if(config('constant.USE_PROXY')) {
@@ -147,12 +147,17 @@ class ImageController extends Controller
 					break;
 				}
 			}
+			// Force break since source size couldn't be obtainable.
+			else if($source_image_size == -1) {
+				$save_success = true;
+				break;
+			}
 		}
 		// var_dump($written_byte);
 		// return;
 
 		if(!$save_success) {
-			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Fail to save image after ' . $iteration . ' attempts.');
+			throw new \Symfony\Component\HttpKernel\Exception\HttpException('Fail to save image after ' . $iteration . ' attempts. Source image size:' . $source_image_size . '. Image size by filesize method: ' . filesize($file_path_encoded) . '. Image size from written_byte value:  ' . $written_byte);
 		}
 
 		try {
@@ -249,7 +254,8 @@ class ImageController extends Controller
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
 			curl_setopt($ch, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
-			// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			// curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			if(config('constant.USE_TRUE_PROXY')) {
 				curl_setopt($ch, CURLOPT_PROXY, config('constant.TRUE_PROXY_ADRESS'));
 			//$proxyauth = 'user:password';
@@ -316,6 +322,7 @@ class ImageController extends Controller
 			curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
 			$raw = curl_exec($ch);
 			// return $raw;
@@ -401,6 +408,7 @@ class ImageController extends Controller
 			curl_setopt($ch,CURLOPT_POST,1);
 			curl_setopt($ch,CURLOPT_POSTFIELDS,$postvars);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
 			$result = curl_exec($ch);
 			curl_close($ch);
